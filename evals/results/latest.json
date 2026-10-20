@@ -1,0 +1,2189 @@
+{
+  "model": "gemini-3.5-flash-lite",
+  "metrics": {
+    "cases": 16,
+    "completed_runs": 5,
+    "recommendation_accuracy": 1.0,
+    "criterion_accuracy": 0.938,
+    "false_approvals": 0,
+    "missed_approvals": 0,
+    "status_recall": {
+      "not_met": 0.857,
+      "met": 1.0
+    },
+    "confusion": {
+      "recommend_approval -> recommend_approval": 3,
+      "refer_to_physician_review -> refer_to_physician_review": 2
+    },
+    "phi_leaks": 0,
+    "guard_replacements": 0,
+    "agent_completed_rate": 1.0,
+    "median_latency_s": 20.5,
+    "mean_tool_calls": 8.4,
+    "mean_input_tokens": 11576
+  },
+  "runs": [
+    {
+      "case_id": "PA-001",
+      "result": {
+        "review_id": "PAR-62D835DF34",
+        "received_at": "2026-10-19T22:30:59.058336Z",
+        "decision_due_by": "2026-10-26T22:30:59.058336Z",
+        "plan_id": "commercial_ppo",
+        "service_code": "mri_lumbar_spine",
+        "urgency": "standard",
+        "policy_id": "MP-RAD-101",
+        "recommendation": "recommend_approval",
+        "recommendation_reasons": [
+          "Policy criteria satisfied (RF1 OR (C1 AND C2 AND C3))."
+        ],
+        "criteria": [
+          {
+            "criterion_id": "RF1",
+            "criterion_text": "At least one red-flag finding is documented: suspected cauda equina syndrome (saddle anesthesia, new urinary retention or incontinence), progressive or severe motor deficit, suspected malignancy, suspected spinal infection, or suspected fracture.",
+            "status": "not_met",
+            "rationale": "The clinical notes explicitly document no bowel or bladder changes, no fever, no weight loss, and no history of cancer, and there is no documentation of suspected cauda equina syndrome, progressive or severe motor deficit, malignancy, infection, or fracture.",
+            "evidence": [
+              {
+                "id": "N9",
+                "source": "notes",
+                "text": "No bowel or bladder changes, no fever, no weight loss, no history of cancer."
+              }
+            ]
+          },
+          {
+            "criterion_id": "C1",
+            "criterion_text": "Low back pain, with or without radiculopathy, has persisted for at least 6 weeks.",
+            "status": "met",
+            "rationale": "Low back pain with radiculopathy is documented as having persisted for about 9 weeks, which is at least 6 weeks.",
+            "evidence": [
+              {
+                "id": "N5",
+                "source": "notes",
+                "text": "52-year-old warehouse supervisor seen for low back pain radiating down the left leg, onset about 9 weeks ago after lifting boxes."
+              }
+            ]
+          },
+          {
+            "criterion_id": "C2",
+            "criterion_text": "A trial of conservative therapy of at least 6 weeks within the last 6 months is documented (for example physical therapy, NSAIDs, activity modification) and has not resolved the symptoms.",
+            "status": "met",
+            "rationale": "A trial of supervised physical therapy and NSAIDs (naproxen) for 6 weeks within the last 6 months is documented and did not resolve symptoms.",
+            "evidence": [
+              {
+                "id": "N6",
+                "source": "notes",
+                "text": "He completed 6 weeks of supervised physical therapy (12 sessions) and took naproxen 500 mg twice daily during that period, with no meaningful improvement."
+              }
+            ]
+          },
+          {
+            "criterion_id": "C3",
+            "criterion_text": "The imaging result is expected to change management: the member is a candidate for surgery or an interventional procedure such as an epidural steroid injection.",
+            "status": "met",
+            "rationale": "The member is referred to spine surgery and is a candidate for a lumbar epidural steroid injection where the MRI is needed to choose the level.",
+            "evidence": [
+              {
+                "id": "N10",
+                "source": "notes",
+                "text": "Referred to spine surgery; Dr. [NAME] plans a lumbar epidural steroid injection and needs MRI to choose the level."
+              }
+            ]
+          }
+        ],
+        "missing_information": [],
+        "diagnosis_checks": [
+          {
+            "code": "M54.42",
+            "supported": true,
+            "description": "Lumbago with sciatica, left side"
+          }
+        ],
+        "cited_sections": [
+          {
+            "section_id": "MP-RAD-101 \u00a72.1",
+            "heading": "Red-flag findings (criterion RF1)"
+          },
+          {
+            "section_id": "MP-RAD-101 \u00a72.3",
+            "heading": "Impact on management (criterion C3)"
+          },
+          {
+            "section_id": "MP-RAD-101 \u00a73",
+            "heading": "Documentation requirements"
+          }
+        ],
+        "reviewer_summary": "The clinical record documents low back pain with radiculopathy persisting for about 9 weeks (meeting C1), a completed 6-week trial of supervised physical therapy and NSAIDs within the last 6 months that did not resolve symptoms (meeting C2), and an expected change in management as the patient is a candidate for a lumbar epidural steroid injection where the MRI is needed to choose the injection level (meeting C3). Red-flag findings (RF1) are not met as there is no documentation of cauda equina syndrome, progressive or severe motor deficit, malignancy, infection, or fracture, and bowel/bladder changes, fever, weight loss, and history of cancer are explicitly denied. Under the approval logic (RF1 OR (C1 AND C2 AND C3)), the request meets the criteria via C1, C2, and C3.",
+        "phi_redactions": {
+          "NAME": 2,
+          "DATE": 1,
+          "MRN": 1,
+          "PHONE": 1
+        },
+        "guard": {
+          "passed": true,
+          "issues": [],
+          "replaced_fields": []
+        },
+        "agent_completed": true,
+        "human_review_required": false,
+        "disclaimer": "Decision support only. Synthetic policies. A licensed clinician makes every adverse determination."
+      },
+      "trace": {
+        "review_id": "PAR-62D835DF34",
+        "duration_ms": 16368,
+        "tool_calls": 11,
+        "llm_turns": 4,
+        "tokens": {
+          "input_tokens": 11170,
+          "output_tokens": 886
+        },
+        "events": [
+          {
+            "seq": 1,
+            "kind": "step",
+            "node": "intake",
+            "message": "PHI redacted before any model call: 1 DATE, 1 MRN, 2 NAME, 1 PHONE.",
+            "at": "2026-10-19T22:30:59.058303+00:00"
+          },
+          {
+            "seq": 2,
+            "kind": "step",
+            "node": "intake",
+            "message": "Policy: MP-RAD-101; applies to plan: True; supported diagnosis codes: 1/1.",
+            "at": "2026-10-19T22:30:59.058331+00:00"
+          },
+          {
+            "seq": 3,
+            "kind": "tool_call",
+            "turn": 1,
+            "tool": "search_policy_guidelines",
+            "purpose": "Review policy definitions and criteria for MP-RAD-101 lumbar spine MRI",
+            "input": {
+              "query": "MP-RAD-101 lumbar spine MRI criteria RF1 C1 C2 C3"
+            },
+            "observation_summary": "Found MP-RAD-101 \u00a72.1, MP-RAD-101 \u00a72.3, MP-RAD-101 \u00a73",
+            "observation": {
+              "sections": [
+                {
+                  "section_id": "MP-RAD-101 \u00a72.1",
+                  "heading": "Red-flag findings (criterion RF1)",
+                  "text": "Red flags justify imaging without a trial of conservative therapy. They include saddle anesthesia, new urinary retention or overflow incontinence, new fecal incontinence, bilateral or progressive leg weakness, foot drop that is worsening, a history of cancer with new back pain, unexplained weight loss, fever with back pain or intravenous drug use, and significant trauma or osteoporosis with suspected fracture. Stable, long-standing numbness alone is not a red flag.",
+                  "score": 0.7823
+                },
+                {
+                  "section_id": "MP-RAD-101 \u00a72.3",
+                  "heading": "Impact on management (criterion C3)",
+                  "text": "The request should state how the result will be used, for example surgical planning by a spine surgeon, or planning of an epidural steroid injection or other interventional procedure. Imaging requested only for reassurance, or because the member asked for it, does not meet this criterion.",
+                  "score": 0.7747
+                },
+                {
+                  "section_id": "MP-RAD-101 \u00a73",
+                  "heading": "Documentation requirements",
+                  "text": "Submit recent clinical notes with symptom onset and duration, neurological examination findings, conservative treatments with dates and duration, and the planned use of the imaging. Prior lumbar imaging within 12 months should be listed. Missing documentation results in a request for additional information, not a denial.",
+                  "score": 0.7638
+                }
+              ]
+            },
+            "ok": true,
+            "duration_ms": 21,
+            "at": "2026-10-19T22:31:02.156183+00:00"
+          },
+          {
+            "seq": 4,
+            "kind": "tool_call",
+            "turn": 1,
+            "tool": "search_clinical_record",
+            "purpose": "Search clinical record for red flag findings (RF1)",
+            "input": {
+              "query": "cauda equina saddle anesthesia urinary retention motor deficit malignancy infection fracture red flag"
+            },
+            "observation_summary": "Found N10 (0.70), N8 (0.65), N5 (0.64), N1 (0.63)",
+            "observation": {
+              "sentences": [
+                {
+                  "id": "N10",
+                  "source": "notes",
+                  "text": "Referred to spine surgery; Dr. [NAME] plans a lumbar epidural steroid injection and needs MRI to choose the level.",
+                  "score": 0.6978
+                },
+                {
+                  "id": "N8",
+                  "source": "notes",
+                  "text": "Exam: positive straight leg raise on the left at 40 degrees, decreased sensation over the dorsum of the left foot, strength 5/5 throughout, reflexes symmetric.",
+                  "score": 0.6489
+                },
+                {
+                  "id": "N5",
+                  "source": "notes",
+                  "text": "52-year-old warehouse supervisor seen for low back pain radiating down the left leg, onset about 9 weeks ago after lifting boxes.",
+                  "score": 0.643
+                },
+                {
+                  "id": "N1",
+                  "source": "notes",
+                  "text": "Patient: [NAME].",
+                  "score": 0.632
+                }
+              ]
+            },
+            "ok": true,
+            "duration_ms": 10,
+            "at": "2026-10-19T22:31:02.166404+00:00"
+          },
+          {
+            "seq": 5,
+            "kind": "tool_call",
+            "turn": 1,
+            "tool": "search_clinical_record",
+            "purpose": "Search clinical record for duration of low back pain (C1)",
+            "input": {
+              "query": "low back pain persisted duration weeks months sciatica"
+            },
+            "observation_summary": "Found N5 (0.86), N7 (0.64), N8 (0.64), N10 (0.61)",
+            "observation": {
+              "sentences": [
+                {
+                  "id": "N5",
+                  "source": "notes",
+                  "text": "52-year-old warehouse supervisor seen for low back pain radiating down the left leg, onset about 9 weeks ago after lifting boxes.",
+                  "score": 0.8576
+                },
+                {
+                  "id": "N7",
+                  "source": "notes",
+                  "text": "Pain is 7/10 and worse with sitting.",
+                  "score": 0.6442
+                },
+                {
+                  "id": "N8",
+                  "source": "notes",
+                  "text": "Exam: positive straight leg raise on the left at 40 degrees, decreased sensation over the dorsum of the left foot, strength 5/5 throughout, reflexes symmetric.",
+                  "score": 0.6351
+                },
+                {
+                  "id": "N10",
+                  "source": "notes",
+                  "text": "Referred to spine surgery; Dr. [NAME] plans a lumbar epidural steroid injection and needs MRI to choose the level.",
+                  "score": 0.6137
+                }
+              ]
+            },
+            "ok": true,
+            "duration_ms": 8,
+            "at": "2026-10-19T22:31:02.175097+00:00"
+          },
+          {
+            "seq": 6,
+            "kind": "tool_call",
+            "turn": 1,
+            "tool": "search_clinical_record",
+            "purpose": "Search clinical record for conservative therapy trial (C2)",
+            "input": {
+              "query": "conservative therapy physical therapy NSAIDs activity modification trial weeks"
+            },
+            "observation_summary": "Found N6 (0.72), N5 (0.61), N8 (0.58), N10 (0.57)",
+            "observation": {
+              "sentences": [
+                {
+                  "id": "N6",
+                  "source": "notes",
+                  "text": "He completed 6 weeks of supervised physical therapy (12 sessions) and took naproxen 500 mg twice daily during that period, with no meaningful improvement.",
+                  "score": 0.7168
+                },
+                {
+                  "id": "N5",
+                  "source": "notes",
+                  "text": "52-year-old warehouse supervisor seen for low back pain radiating down the left leg, onset about 9 weeks ago after lifting boxes.",
+                  "score": 0.6075
+                },
+                {
+                  "id": "N8",
+                  "source": "notes",
+                  "text": "Exam: positive straight leg raise on the left at 40 degrees, decreased sensation over the dorsum of the left foot, strength 5/5 throughout, reflexes symmetric.",
+                  "score": 0.5846
+                },
+                {
+                  "id": "N10",
+                  "source": "notes",
+                  "text": "Referred to spine surgery; Dr. [NAME] plans a lumbar epidural steroid injection and needs MRI to choose the level.",
+                  "score": 0.5742
+                }
+              ]
+            },
+            "ok": true,
+            "duration_ms": 8,
+            "at": "2026-10-19T22:31:02.183564+00:00"
+          },
+          {
+            "seq": 7,
+            "kind": "tool_call",
+            "turn": 1,
+            "tool": "search_clinical_record",
+            "purpose": "Search clinical record for expected change in management or candidacy for surgery/interventional procedure (C3)",
+            "input": {
+              "query": "management surgery interventional procedure epidural steroid injection candidate"
+            },
+            "observation_summary": "Found N10 (0.98), N1 (0.62), N3 (0.58), N2 (0.56)",
+            "observation": {
+              "sentences": [
+                {
+                  "id": "N10",
+                  "source": "notes",
+                  "text": "Referred to spine surgery; Dr. [NAME] plans a lumbar epidural steroid injection and needs MRI to choose the level.",
+                  "score": 0.9822
+                },
+                {
+                  "id": "N1",
+                  "source": "notes",
+                  "text": "Patient: [NAME].",
+                  "score": 0.6159
+                },
+                {
+                  "id": "N3",
+                  "source": "notes",
+                  "text": "MRN [MRN].",
+                  "score": 0.5812
+                },
+                {
+                  "id": "N2",
+                  "source": "notes",
+                  "text": "DOB [DATE].",
+                  "score": 0.5592
+                }
+              ]
+            },
+            "ok": true,
+            "duration_ms": 8,
+            "at": "2026-10-19T22:31:02.191765+00:00"
+          },
+          {
+            "seq": 8,
+            "kind": "tool_call",
+            "turn": 2,
+            "tool": "search_clinical_record",
+            "purpose": "Check clinical record for any documented red-flag findings (RF1)",
+            "input": {
+              "query": "saddle anesthesia urinary retention incontinence malignancy cancer infection fever fracture weakness"
+            },
+            "observation_summary": "Found N9 (0.73), N5 (0.65), N10 (0.65), N1 (0.64)",
+            "observation": {
+              "sentences": [
+                {
+                  "id": "N9",
+                  "source": "notes",
+                  "text": "No bowel or bladder changes, no fever, no weight loss, no history of cancer.",
+                  "score": 0.7282
+                },
+                {
+                  "id": "N5",
+                  "source": "notes",
+                  "text": "52-year-old warehouse supervisor seen for low back pain radiating down the left leg, onset about 9 weeks ago after lifting boxes.",
+                  "score": 0.6548
+                },
+                {
+                  "id": "N10",
+                  "source": "notes",
+                  "text": "Referred to spine surgery; Dr. [NAME] plans a lumbar epidural steroid injection and needs MRI to choose the level.",
+                  "score": 0.6472
+                },
+                {
+                  "id": "N1",
+                  "source": "notes",
+                  "text": "Patient: [NAME].",
+                  "score": 0.6356
+                }
+              ]
+            },
+            "ok": true,
+            "duration_ms": 13,
+            "at": "2026-10-19T22:31:08.494875+00:00"
+          },
+          {
+            "seq": 9,
+            "kind": "tool_call",
+            "turn": 3,
+            "tool": "record_criterion",
+            "purpose": "Record assessment of red-flag findings criterion RF1",
+            "input": {
+              "criterion_id": "RF1",
+              "status": "not_met",
+              "evidence_ids": [
+                "N9"
+              ],
+              "rationale": "The clinical notes explicitly document no bowel or bladder changes, no fever, no weight loss, and no history of cancer, and there is no documentation of suspected cauda equina syndrome, progressive or severe motor deficit, malignancy, infection, or fracture."
+            },
+            "observation_summary": "RF1 = not_met; remaining: C1, C2, C3",
+            "observation": {
+              "recorded": "RF1",
+              "status": "not_met",
+              "remaining_criteria": [
+                "C1",
+                "C2",
+                "C3"
+              ]
+            },
+            "ok": true,
+            "duration_ms": 0,
+            "at": "2026-10-19T22:31:11.756811+00:00"
+          },
+          {
+            "seq": 10,
+            "kind": "tool_call",
+            "turn": 3,
+            "tool": "record_criterion",
+            "purpose": "Record assessment of low back pain duration criterion C1",
+            "input": {
+              "criterion_id": "C1",
+              "status": "met",
+              "evidence_ids": [
+                "N5"
+              ],
+              "rationale": "Low back pain with radiculopathy is documented as having persisted for about 9 weeks, which is at least 6 weeks."
+            },
+            "observation_summary": "C1 = met; remaining: C2, C3",
+            "observation": {
+              "recorded": "C1",
+              "status": "met",
+              "remaining_criteria": [
+                "C2",
+                "C3"
+              ]
+            },
+            "ok": true,
+            "duration_ms": 0,
+            "at": "2026-10-19T22:31:11.756835+00:00"
+          },
+          {
+            "seq": 11,
+            "kind": "tool_call",
+            "turn": 3,
+            "tool": "record_criterion",
+            "purpose": "Record assessment of conservative therapy trial criterion C2",
+            "input": {
+              "criterion_id": "C2",
+              "status": "met",
+              "evidence_ids": [
+                "N6"
+              ],
+              "rationale": "A trial of supervised physical therapy and NSAIDs (naproxen) for 6 weeks within the last 6 months is documented and did not resolve symptoms."
+            },
+            "observation_summary": "C2 = met; remaining: C3",
+            "observation": {
+              "recorded": "C2",
+              "status": "met",
+              "remaining_criteria": [
+                "C3"
+              ]
+            },
+            "ok": true,
+            "duration_ms": 0,
+            "at": "2026-10-19T22:31:11.756851+00:00"
+          },
+          {
+            "seq": 12,
+            "kind": "tool_call",
+            "turn": 3,
+            "tool": "record_criterion",
+            "purpose": "Record assessment of expected change in management criterion C3",
+            "input": {
+              "criterion_id": "C3",
+              "status": "met",
+              "evidence_ids": [
+                "N10"
+              ],
+              "rationale": "The member is referred to spine surgery and is a candidate for a lumbar epidural steroid injection where the MRI is needed to choose the level."
+            },
+            "observation_summary": "C3 = met; remaining: none",
+            "observation": {
+              "recorded": "C3",
+              "status": "met",
+              "remaining_criteria": []
+            },
+            "ok": true,
+            "duration_ms": 0,
+            "at": "2026-10-19T22:31:11.756865+00:00"
+          },
+          {
+            "seq": 13,
+            "kind": "tool_call",
+            "turn": 4,
+            "tool": "finish_review",
+            "purpose": "Call finish_review",
+            "input": {
+              "summary": "The clinical record documents low back pain with radiculopathy persisting for about 9 weeks (meeting C1), a completed 6-week trial of supervised physical therapy and NSAIDs within the last 6 months that did not resolve symptoms (meeting C2), and an expected change in management as the patient is a candidate for a lumbar epidural steroid injection where the MRI is needed to choose the injection level (meeting C3). Red-flag findings (RF1) are not met as there is no documentation of cauda equina syndrome, progressive or severe motor deficit, malignancy, infection, or fracture, and bowel/bladder changes, fever, weight loss, and history of cancer are explicitly denied. Under the approval logic (RF1 OR (C1 AND C2 AND C3)), the request meets the criteria via C1, C2, and C3.",
+              "cited_section_ids": [
+                "MP-RAD-101 \u00a72.1",
+                "MP-RAD-101 \u00a72.3",
+                "MP-RAD-101 \u00a73"
+              ]
+            },
+            "observation_summary": "Review finished",
+            "observation": {
+              "finished": true
+            },
+            "ok": true,
+            "duration_ms": 0,
+            "at": "2026-10-19T22:31:15.352466+00:00"
+          },
+          {
+            "seq": 14,
+            "kind": "step",
+            "node": "decide",
+            "message": "Deterministic gate: recommend_approval. Policy criteria satisfied (RF1 OR (C1 AND C2 AND C3)).",
+            "at": "2026-10-19T22:31:15.353036+00:00"
+          },
+          {
+            "seq": 15,
+            "kind": "step",
+            "node": "guard",
+            "message": "All model-written text passed the output checks.",
+            "at": "2026-10-19T22:31:15.353892+00:00"
+          }
+        ]
+      },
+      "phi_leaks": []
+    },
+    {
+      "case_id": "PA-002",
+      "result": {
+        "review_id": "PAR-8EB8CDBCBB",
+        "received_at": "2026-10-19T22:31:19.453300Z",
+        "decision_due_by": "2026-10-22T22:31:19.453300Z",
+        "plan_id": "commercial_hmo",
+        "service_code": "mri_lumbar_spine",
+        "urgency": "expedited",
+        "policy_id": "MP-RAD-101",
+        "recommendation": "recommend_approval",
+        "recommendation_reasons": [
+          "Policy criteria satisfied (RF1 OR (C1 AND C2 AND C3))."
+        ],
+        "criteria": [
+          {
+            "criterion_id": "RF1",
+            "criterion_text": "At least one red-flag finding is documented: suspected cauda equina syndrome (saddle anesthesia, new urinary retention or incontinence), progressive or severe motor deficit, suspected malignancy, suspected spinal infection, or suspected fracture.",
+            "status": "met",
+            "rationale": "The clinical record documents suspected cauda equina syndrome with saddle anesthesia, new urinary retention, and bilateral progressive motor deficit.",
+            "evidence": [
+              {
+                "id": "N4",
+                "source": "notes",
+                "text": "Since yesterday she reports numbness in the groin and inner thighs and has had difficulty starting urination; bladder scan shows 650 mL post-void residual."
+              },
+              {
+                "id": "N5",
+                "source": "notes",
+                "text": "Exam shows saddle anesthesia and reduced ankle dorsiflexion strength on both sides (4/5)."
+              },
+              {
+                "id": "N7",
+                "source": "notes",
+                "text": "Neurosurgery consulted for possible emergency decompression; urgent MRI requested to confirm cauda equina compression."
+              }
+            ]
+          },
+          {
+            "criterion_id": "C1",
+            "criterion_text": "Low back pain, with or without radiculopathy, has persisted for at least 6 weeks.",
+            "status": "not_met",
+            "rationale": "Low back pain has persisted for 10 days, which is less than the required 6 weeks.",
+            "evidence": [
+              {
+                "id": "N3",
+                "source": "notes",
+                "text": "41-year-old with low back pain for 10 days, worse over the last 48 hours."
+              }
+            ]
+          },
+          {
+            "criterion_id": "C2",
+            "criterion_text": "A trial of conservative therapy of at least 6 weeks within the last 6 months is documented (for example physical therapy, NSAIDs, activity modification) and has not resolved the symptoms.",
+            "status": "not_met",
+            "rationale": "The clinical record notes no prior physical therapy and does not document a 6-week trial of conservative therapy.",
+            "evidence": [
+              {
+                "id": "N6",
+                "source": "notes",
+                "text": "No prior physical therapy."
+              }
+            ]
+          },
+          {
+            "criterion_id": "C3",
+            "criterion_text": "The imaging result is expected to change management: the member is a candidate for surgery or an interventional procedure such as an epidural steroid injection.",
+            "status": "met",
+            "rationale": "Neurosurgery has been consulted for possible emergency decompression and the MRI is requested to confirm cauda equina compression to guide surgical management.",
+            "evidence": [
+              {
+                "id": "N7",
+                "source": "notes",
+                "text": "Neurosurgery consulted for possible emergency decompression; urgent MRI requested to confirm cauda equina compression."
+              }
+            ]
+          }
+        ],
+        "missing_information": [],
+        "diagnosis_checks": [
+          {
+            "code": "G83.4",
+            "supported": true,
+            "description": "Cauda equina syndrome"
+          },
+          {
+            "code": "M54.50",
+            "supported": true,
+            "description": "Low back pain, unspecified"
+          }
+        ],
+        "cited_sections": [
+          {
+            "section_id": "MP-RAD-101 \u00a71",
+            "heading": "Scope"
+          },
+          {
+            "section_id": "MP-RAD-101 \u00a72.1",
+            "heading": "Red-flag findings (criterion RF1)"
+          },
+          {
+            "section_id": "MP-RAD-101 \u00a72.3",
+            "heading": "Impact on management (criterion C3)"
+          }
+        ],
+        "reviewer_summary": "The member presents with suspected cauda equina syndrome, including new urinary retention, saddle anesthesia, and bilateral motor weakness (red-flag findings, meeting criterion RF1). Low back pain has persisted for 10 days and there is no 6-week trial of conservative therapy (criteria C1 and C2 are not met). The imaging is expected to change management as neurosurgery has been consulted for possible emergency decompression (meeting criterion C3). Under the policy approval logic, RF1 is met, satisfying the requirement (RF1 OR [C1 AND C2 AND C3]).",
+        "phi_redactions": {
+          "NAME": 1,
+          "MEMBER_ID": 1
+        },
+        "guard": {
+          "passed": true,
+          "issues": [],
+          "replaced_fields": []
+        },
+        "agent_completed": true,
+        "human_review_required": false,
+        "disclaimer": "Decision support only. Synthetic policies. A licensed clinician makes every adverse determination."
+      },
+      "trace": {
+        "review_id": "PAR-8EB8CDBCBB",
+        "duration_ms": 23624,
+        "tool_calls": 10,
+        "llm_turns": 4,
+        "tokens": {
+          "input_tokens": 9857,
+          "output_tokens": 729
+        },
+        "events": [
+          {
+            "seq": 1,
+            "kind": "step",
+            "node": "intake",
+            "message": "PHI redacted before any model call: 1 MEMBER_ID, 1 NAME.",
+            "at": "2026-10-19T22:31:19.453267+00:00"
+          },
+          {
+            "seq": 2,
+            "kind": "step",
+            "node": "intake",
+            "message": "Policy: MP-RAD-101; applies to plan: True; supported diagnosis codes: 2/2.",
+            "at": "2026-10-19T22:31:19.453295+00:00"
+          },
+          {
+            "seq": 3,
+            "kind": "tool_call",
+            "turn": 1,
+            "tool": "search_policy_guidelines",
+            "purpose": "Understand criteria definitions for MRI lumbar spine policy MP-RAD-101",
+            "input": {
+              "query": "red-flag finding C1 C2 C3"
+            },
+            "observation_summary": "Found MP-RAD-101 \u00a72.1, MP-RAD-101 \u00a72.3, MP-RAD-101 \u00a71",
+            "observation": {
+              "sections": [
+                {
+                  "section_id": "MP-RAD-101 \u00a72.1",
+                  "heading": "Red-flag findings (criterion RF1)",
+                  "text": "Red flags justify imaging without a trial of conservative therapy. They include saddle anesthesia, new urinary retention or overflow incontinence, new fecal incontinence, bilateral or progressive leg weakness, foot drop that is worsening, a history of cancer with new back pain, unexplained weight loss, fever with back pain or intravenous drug use, and significant trauma or osteoporosis with suspected fracture. Stable, long-standing numbness alone is not a red flag.",
+                  "score": 0.6353
+                },
+                {
+                  "section_id": "MP-RAD-101 \u00a72.3",
+                  "heading": "Impact on management (criterion C3)",
+                  "text": "The request should state how the result will be used, for example surgical planning by a spine surgeon, or planning of an epidural steroid injection or other interventional procedure. Imaging requested only for reassurance, or because the member asked for it, does not meet this criterion.",
+                  "score": 0.5478
+                },
+                {
+                  "section_id": "MP-RAD-101 \u00a71",
+                  "heading": "Scope",
+                  "text": "This policy applies to requests for MRI of the lumbar spine without contrast for adult members. Most acute low back pain improves within 4 to 6 weeks with conservative care, and early imaging without red flags does not improve outcomes. Imaging is therefore indicated either immediately when red flags are present, or after a documented failed trial of conservative therapy when the result will guide a procedure.",
+                  "score": 0.5342
+                }
+              ]
+            },
+            "ok": true,
+            "duration_ms": 8,
+            "at": "2026-10-19T22:31:24.506108+00:00"
+          },
+          {
+            "seq": 4,
+            "kind": "tool_call",
+            "turn": 1,
+            "tool": "search_clinical_record",
+            "purpose": "Search for any red-flag findings (RF1) in the clinical record",
+            "input": {
+              "query": "cauda equina saddle anesthesia urinary retention motor deficit malignancy infection fracture red flag"
+            },
+            "observation_summary": "Found N7 (0.78), N5 (0.74), N3 (0.67), N4 (0.65)",
+            "observation": {
+              "sentences": [
+                {
+                  "id": "N7",
+                  "source": "notes",
+                  "text": "Neurosurgery consulted for possible emergency decompression; urgent MRI requested to confirm cauda equina compression.",
+                  "score": 0.7821
+                },
+                {
+                  "id": "N5",
+                  "source": "notes",
+                  "text": "Exam shows saddle anesthesia and reduced ankle dorsiflexion strength on both sides (4/5).",
+                  "score": 0.7432
+                },
+                {
+                  "id": "N3",
+                  "source": "notes",
+                  "text": "41-year-old with low back pain for 10 days, worse over the last 48 hours.",
+                  "score": 0.6738
+                },
+                {
+                  "id": "N4",
+                  "source": "notes",
+                  "text": "Since yesterday she reports numbness in the groin and inner thighs and has had difficulty starting urination; bladder scan shows 650 mL post-void residual.",
+                  "score": 0.6474
+                }
+              ]
+            },
+            "ok": true,
+            "duration_ms": 9,
+            "at": "2026-10-19T22:31:24.515322+00:00"
+          },
+          {
+            "seq": 5,
+            "kind": "tool_call",
+            "turn": 2,
+            "tool": "search_clinical_record",
+            "purpose": "Search for duration of symptoms (C1) in the clinical record",
+            "input": {
+              "query": "low back pain persisted weeks duration"
+            },
+            "observation_summary": "Found N3 (0.98), N6 (0.61), N4 (0.60), N7 (0.59)",
+            "observation": {
+              "sentences": [
+                {
+                  "id": "N3",
+                  "source": "notes",
+                  "text": "41-year-old with low back pain for 10 days, worse over the last 48 hours.",
+                  "score": 0.9762
+                },
+                {
+                  "id": "N6",
+                  "source": "notes",
+                  "text": "No prior physical therapy.",
+                  "score": 0.6056
+                },
+                {
+                  "id": "N4",
+                  "source": "notes",
+                  "text": "Since yesterday she reports numbness in the groin and inner thighs and has had difficulty starting urination; bladder scan shows 650 mL post-void residual.",
+                  "score": 0.5978
+                },
+                {
+                  "id": "N7",
+                  "source": "notes",
+                  "text": "Neurosurgery consulted for possible emergency decompression; urgent MRI requested to confirm cauda equina compression.",
+                  "score": 0.5909
+                }
+              ]
+            },
+            "ok": true,
+            "duration_ms": 7,
+            "at": "2026-10-19T22:31:30.331084+00:00"
+          },
+          {
+            "seq": 6,
+            "kind": "tool_call",
+            "turn": 2,
+            "tool": "search_clinical_record",
+            "purpose": "Search for conservative therapy trial (C2) in the clinical record",
+            "input": {
+              "query": "conservative therapy physical therapy NSAIDs activity modification trial"
+            },
+            "observation_summary": "Found N6 (0.71), N3 (0.58), N5 (0.56), N7 (0.54)",
+            "observation": {
+              "sentences": [
+                {
+                  "id": "N6",
+                  "source": "notes",
+                  "text": "No prior physical therapy.",
+                  "score": 0.7099
+                },
+                {
+                  "id": "N3",
+                  "source": "notes",
+                  "text": "41-year-old with low back pain for 10 days, worse over the last 48 hours.",
+                  "score": 0.5807
+                },
+                {
+                  "id": "N5",
+                  "source": "notes",
+                  "text": "Exam shows saddle anesthesia and reduced ankle dorsiflexion strength on both sides (4/5).",
+                  "score": 0.5608
+                },
+                {
+                  "id": "N7",
+                  "source": "notes",
+                  "text": "Neurosurgery consulted for possible emergency decompression; urgent MRI requested to confirm cauda equina compression.",
+                  "score": 0.5429
+                }
+              ]
+            },
+            "ok": true,
+            "duration_ms": 7,
+            "at": "2026-10-19T22:31:30.338789+00:00"
+          },
+          {
+            "seq": 7,
+            "kind": "tool_call",
+            "turn": 2,
+            "tool": "search_clinical_record",
+            "purpose": "Search for management change / surgical candidacy (C3) in the clinical record",
+            "input": {
+              "query": "surgery interventional procedure epidural steroid injection change management candidate"
+            },
+            "observation_summary": "Found N7 (0.66), N5 (0.56), N1 (0.56), N3 (0.55)",
+            "observation": {
+              "sentences": [
+                {
+                  "id": "N7",
+                  "source": "notes",
+                  "text": "Neurosurgery consulted for possible emergency decompression; urgent MRI requested to confirm cauda equina compression.",
+                  "score": 0.6569
+                },
+                {
+                  "id": "N5",
+                  "source": "notes",
+                  "text": "Exam shows saddle anesthesia and reduced ankle dorsiflexion strength on both sides (4/5).",
+                  "score": 0.5637
+                },
+                {
+                  "id": "N1",
+                  "source": "notes",
+                  "text": "ED note.",
+                  "score": 0.5624
+                },
+                {
+                  "id": "N3",
+                  "source": "notes",
+                  "text": "41-year-old with low back pain for 10 days, worse over the last 48 hours.",
+                  "score": 0.5469
+                }
+              ]
+            },
+            "ok": true,
+            "duration_ms": 8,
+            "at": "2026-10-19T22:31:30.347164+00:00"
+          },
+          {
+            "seq": 8,
+            "kind": "tool_call",
+            "turn": 3,
+            "tool": "record_criterion",
+            "purpose": "Record assessment for red-flag findings criterion",
+            "input": {
+              "criterion_id": "RF1",
+              "status": "met",
+              "evidence_ids": [
+                "N4",
+                "N5",
+                "N7"
+              ],
+              "rationale": "The clinical record documents suspected cauda equina syndrome with saddle anesthesia, new urinary retention, and bilateral progressive motor deficit."
+            },
+            "observation_summary": "RF1 = met; remaining: C1, C2, C3",
+            "observation": {
+              "recorded": "RF1",
+              "status": "met",
+              "remaining_criteria": [
+                "C1",
+                "C2",
+                "C3"
+              ]
+            },
+            "ok": true,
+            "duration_ms": 0,
+            "at": "2026-10-19T22:31:34.970679+00:00"
+          },
+          {
+            "seq": 9,
+            "kind": "tool_call",
+            "turn": 3,
+            "tool": "record_criterion",
+            "purpose": "Record assessment for 6 weeks pain duration criterion",
+            "input": {
+              "criterion_id": "C1",
+              "status": "not_met",
+              "evidence_ids": [
+                "N3"
+              ],
+              "rationale": "Low back pain has persisted for 10 days, which is less than the required 6 weeks."
+            },
+            "observation_summary": "C1 = not_met; remaining: C2, C3",
+            "observation": {
+              "recorded": "C1",
+              "status": "not_met",
+              "remaining_criteria": [
+                "C2",
+                "C3"
+              ]
+            },
+            "ok": true,
+            "duration_ms": 0,
+            "at": "2026-10-19T22:31:34.970742+00:00"
+          },
+          {
+            "seq": 10,
+            "kind": "tool_call",
+            "turn": 3,
+            "tool": "record_criterion",
+            "purpose": "Record assessment for conservative therapy criterion",
+            "input": {
+              "criterion_id": "C2",
+              "status": "not_met",
+              "evidence_ids": [
+                "N6"
+              ],
+              "rationale": "The clinical record notes no prior physical therapy and does not document a 6-week trial of conservative therapy."
+            },
+            "observation_summary": "C2 = not_met; remaining: C3",
+            "observation": {
+              "recorded": "C2",
+              "status": "not_met",
+              "remaining_criteria": [
+                "C3"
+              ]
+            },
+            "ok": true,
+            "duration_ms": 0,
+            "at": "2026-10-19T22:31:34.970761+00:00"
+          },
+          {
+            "seq": 11,
+            "kind": "tool_call",
+            "turn": 3,
+            "tool": "record_criterion",
+            "purpose": "Record assessment for management change criterion",
+            "input": {
+              "criterion_id": "C3",
+              "status": "met",
+              "evidence_ids": [
+                "N7"
+              ],
+              "rationale": "Neurosurgery has been consulted for possible emergency decompression and the MRI is requested to confirm cauda equina compression to guide surgical management."
+            },
+            "observation_summary": "C3 = met; remaining: none",
+            "observation": {
+              "recorded": "C3",
+              "status": "met",
+              "remaining_criteria": []
+            },
+            "ok": true,
+            "duration_ms": 0,
+            "at": "2026-10-19T22:31:34.970775+00:00"
+          },
+          {
+            "seq": 12,
+            "kind": "tool_call",
+            "turn": 4,
+            "tool": "finish_review",
+            "purpose": "Call finish_review",
+            "input": {
+              "summary": "The member presents with suspected cauda equina syndrome, including new urinary retention, saddle anesthesia, and bilateral motor weakness (red-flag findings, meeting criterion RF1). Low back pain has persisted for 10 days and there is no 6-week trial of conservative therapy (criteria C1 and C2 are not met). The imaging is expected to change management as neurosurgery has been consulted for possible emergency decompression (meeting criterion C3). Under the policy approval logic, RF1 is met, satisfying the requirement (RF1 OR [C1 AND C2 AND C3]).",
+              "cited_section_ids": [
+                "MP-RAD-101 \u00a71",
+                "MP-RAD-101 \u00a72.1",
+                "MP-RAD-101 \u00a72.3"
+              ]
+            },
+            "observation_summary": "Review finished",
+            "observation": {
+              "finished": true
+            },
+            "ok": true,
+            "duration_ms": 0,
+            "at": "2026-10-19T22:31:43.024368+00:00"
+          },
+          {
+            "seq": 13,
+            "kind": "step",
+            "node": "decide",
+            "message": "Deterministic gate: recommend_approval. Policy criteria satisfied (RF1 OR (C1 AND C2 AND C3)).",
+            "at": "2026-10-19T22:31:43.024917+00:00"
+          },
+          {
+            "seq": 14,
+            "kind": "step",
+            "node": "guard",
+            "message": "All model-written text passed the output checks.",
+            "at": "2026-10-19T22:31:43.025626+00:00"
+          }
+        ]
+      },
+      "phi_leaks": []
+    },
+    {
+      "case_id": "PA-003",
+      "result": {
+        "review_id": "PAR-ACF06BA313",
+        "received_at": "2026-10-19T22:31:47.118238Z",
+        "decision_due_by": "2026-10-26T22:31:47.118238Z",
+        "plan_id": "commercial_ppo",
+        "service_code": "mri_lumbar_spine",
+        "urgency": "standard",
+        "policy_id": "MP-RAD-101",
+        "recommendation": "refer_to_physician_review",
+        "recommendation_reasons": [
+          "The documented evidence does not satisfy RF1 OR (C1 AND C2 AND C3)."
+        ],
+        "criteria": [
+          {
+            "criterion_id": "RF1",
+            "criterion_text": "At least one red-flag finding is documented: suspected cauda equina syndrome (saddle anesthesia, new urinary retention or incontinence), progressive or severe motor deficit, suspected malignancy, suspected spinal infection, or suspected fracture.",
+            "status": "not_met",
+            "rationale": "The record explicitly notes no bowel or bladder symptoms, no fever, no trauma, and normal neurological exam without motor deficit or signs of cauda equina, malignancy, infection, or fracture.",
+            "evidence": [
+              {
+                "id": "N2",
+                "source": "notes",
+                "text": "No leg pain, no numbness, no weakness, no bowel or bladder symptoms, no fever, no trauma."
+              }
+            ]
+          },
+          {
+            "criterion_id": "C1",
+            "criterion_text": "Low back pain, with or without radiculopathy, has persisted for at least 6 weeks.",
+            "status": "not_met",
+            "rationale": "Low back pain has persisted for 3 weeks, which is less than the required 6 weeks.",
+            "evidence": [
+              {
+                "id": "N1",
+                "source": "notes",
+                "text": "30-year-old software engineer with low back pain for 3 weeks after starting a new gym program."
+              }
+            ]
+          },
+          {
+            "criterion_id": "C2",
+            "criterion_text": "A trial of conservative therapy of at least 6 weeks within the last 6 months is documented (for example physical therapy, NSAIDs, activity modification) and has not resolved the symptoms.",
+            "status": "not_met",
+            "rationale": "Conservative therapy (ibuprofen for 1 week; physical therapy referral placed but not started) has not lasted 6 weeks within the last 6 months.",
+            "evidence": [
+              {
+                "id": "N1",
+                "source": "notes",
+                "text": "30-year-old software engineer with low back pain for 3 weeks after starting a new gym program."
+              },
+              {
+                "id": "N4",
+                "source": "notes",
+                "text": "Has used ibuprofen as needed for a week."
+              },
+              {
+                "id": "N6",
+                "source": "notes",
+                "text": "Advised heat and stretching; physical therapy referral placed but not started."
+              }
+            ]
+          },
+          {
+            "criterion_id": "C3",
+            "criterion_text": "The imaging result is expected to change management: the member is a candidate for surgery or an interventional procedure such as an epidural steroid injection.",
+            "status": "insufficient_evidence",
+            "rationale": "The record documents that the patient is asking for an MRI to be reassured, and does not mention candidacy for surgery or an interventional procedure where imaging would change management.",
+            "evidence": [
+              {
+                "id": "N5",
+                "source": "notes",
+                "text": "He is worried something is seriously wrong and is asking for an MRI to be reassured."
+              }
+            ]
+          }
+        ],
+        "missing_information": [
+          "C3: The imaging result is expected to change management: the member is a candidate for surgery or an interventional procedure such as an epidural steroid injection."
+        ],
+        "diagnosis_checks": [
+          {
+            "code": "M54.50",
+            "supported": true,
+            "description": "Low back pain, unspecified"
+          }
+        ],
+        "cited_sections": [
+          {
+            "section_id": "MP-RAD-101 \u00a71",
+            "heading": "Scope"
+          },
+          {
+            "section_id": "MP-RAD-101 \u00a72.1",
+            "heading": "Red-flag findings (criterion RF1)"
+          },
+          {
+            "section_id": "MP-RAD-101 \u00a72.2",
+            "heading": "Duration of symptoms and conservative therapy (criteria C1 and C2)"
+          }
+        ],
+        "reviewer_summary": "The member is a 30-year-old with low back pain for 3 weeks following the start of a gym program. Regarding red-flag findings (RF1), the clinical notes document no fever, no trauma, no bowel or bladder symptoms, and a normal neurological exam, contradicting the presence of red flags. Regarding symptom duration (C1), low back pain has persisted for 3 weeks, which does not meet the 6-week requirement. Regarding conservative therapy (C2), the member has used ibuprofen for a week and has a physical therapy referral that has not yet been started, failing to meet the 6-week duration requirement within the last 6 months. Regarding management change (C3), the record notes the patient is requesting an MRI for reassurance, and there is insufficient evidence that the imaging result is expected to change management or that the member is a candidate for surgery or an interventional procedure.",
+        "phi_redactions": {},
+        "guard": {
+          "passed": true,
+          "issues": [],
+          "replaced_fields": []
+        },
+        "agent_completed": true,
+        "human_review_required": true,
+        "disclaimer": "Decision support only. Synthetic policies. A licensed clinician makes every adverse determination."
+      },
+      "trace": {
+        "review_id": "PAR-ACF06BA313",
+        "duration_ms": 20471,
+        "tool_calls": 11,
+        "llm_turns": 5,
+        "tokens": {
+          "input_tokens": 13123,
+          "output_tokens": 864
+        },
+        "events": [
+          {
+            "seq": 1,
+            "kind": "step",
+            "node": "intake",
+            "message": "PHI redacted before any model call: none found.",
+            "at": "2026-10-19T22:31:47.118206+00:00"
+          },
+          {
+            "seq": 2,
+            "kind": "step",
+            "node": "intake",
+            "message": "Policy: MP-RAD-101; applies to plan: True; supported diagnosis codes: 1/1.",
+            "at": "2026-10-19T22:31:47.118232+00:00"
+          },
+          {
+            "seq": 3,
+            "kind": "tool_call",
+            "turn": 1,
+            "tool": "search_clinical_record",
+            "purpose": "Check for red-flag findings (RF1)",
+            "input": {
+              "query": "cauda equina anesthesia urinary retention motor deficit malignancy infection fracture"
+            },
+            "observation_summary": "Found N3 (0.70), N1 (0.63), N6 (0.61), N2 (0.61)",
+            "observation": {
+              "sentences": [
+                {
+                  "id": "N3",
+                  "source": "notes",
+                  "text": "Neurological exam normal.",
+                  "score": 0.7041
+                },
+                {
+                  "id": "N1",
+                  "source": "notes",
+                  "text": "30-year-old software engineer with low back pain for 3 weeks after starting a new gym program.",
+                  "score": 0.6295
+                },
+                {
+                  "id": "N6",
+                  "source": "notes",
+                  "text": "Advised heat and stretching; physical therapy referral placed but not started.",
+                  "score": 0.6103
+                },
+                {
+                  "id": "N2",
+                  "source": "notes",
+                  "text": "No leg pain, no numbness, no weakness, no bowel or bladder symptoms, no fever, no trauma.",
+                  "score": 0.6052
+                }
+              ]
+            },
+            "ok": true,
+            "duration_ms": 8,
+            "at": "2026-10-19T22:31:50.671389+00:00"
+          },
+          {
+            "seq": 4,
+            "kind": "tool_call",
+            "turn": 1,
+            "tool": "search_clinical_record",
+            "purpose": "Check for duration of low back pain (C1)",
+            "input": {
+              "query": "low back pain persisted weeks months"
+            },
+            "observation_summary": "Found N1 (0.99), N2 (0.67), N4 (0.66), N6 (0.64)",
+            "observation": {
+              "sentences": [
+                {
+                  "id": "N1",
+                  "source": "notes",
+                  "text": "30-year-old software engineer with low back pain for 3 weeks after starting a new gym program.",
+                  "score": 0.9904
+                },
+                {
+                  "id": "N2",
+                  "source": "notes",
+                  "text": "No leg pain, no numbness, no weakness, no bowel or bladder symptoms, no fever, no trauma.",
+                  "score": 0.6715
+                },
+                {
+                  "id": "N4",
+                  "source": "notes",
+                  "text": "Has used ibuprofen as needed for a week.",
+                  "score": 0.6634
+                },
+                {
+                  "id": "N6",
+                  "source": "notes",
+                  "text": "Advised heat and stretching; physical therapy referral placed but not started.",
+                  "score": 0.6442
+                }
+              ]
+            },
+            "ok": true,
+            "duration_ms": 6,
+            "at": "2026-10-19T22:31:50.678341+00:00"
+          },
+          {
+            "seq": 5,
+            "kind": "tool_call",
+            "turn": 1,
+            "tool": "search_clinical_record",
+            "purpose": "Check for trial of conservative therapy (C2)",
+            "input": {
+              "query": "conservative therapy physical therapy NSAIDs activity modification"
+            },
+            "observation_summary": "Found N6 (0.78), N4 (0.63), N1 (0.61), N3 (0.58)",
+            "observation": {
+              "sentences": [
+                {
+                  "id": "N6",
+                  "source": "notes",
+                  "text": "Advised heat and stretching; physical therapy referral placed but not started.",
+                  "score": 0.7813
+                },
+                {
+                  "id": "N4",
+                  "source": "notes",
+                  "text": "Has used ibuprofen as needed for a week.",
+                  "score": 0.6343
+                },
+                {
+                  "id": "N1",
+                  "source": "notes",
+                  "text": "30-year-old software engineer with low back pain for 3 weeks after starting a new gym program.",
+                  "score": 0.6136
+                },
+                {
+                  "id": "N3",
+                  "source": "notes",
+                  "text": "Neurological exam normal.",
+                  "score": 0.5784
+                }
+              ]
+            },
+            "ok": true,
+            "duration_ms": 7,
+            "at": "2026-10-19T22:31:50.685408+00:00"
+          },
+          {
+            "seq": 6,
+            "kind": "tool_call",
+            "turn": 1,
+            "tool": "search_clinical_record",
+            "purpose": "Check if imaging result is expected to change management / candidate for surgery or procedure (C3)",
+            "input": {
+              "query": "surgery interventional procedure epidural steroid injection change management candidate"
+            },
+            "observation_summary": "Found N3 (0.60), N1 (0.58), N4 (0.58), N6 (0.55)",
+            "observation": {
+              "sentences": [
+                {
+                  "id": "N3",
+                  "source": "notes",
+                  "text": "Neurological exam normal.",
+                  "score": 0.6036
+                },
+                {
+                  "id": "N1",
+                  "source": "notes",
+                  "text": "30-year-old software engineer with low back pain for 3 weeks after starting a new gym program.",
+                  "score": 0.5811
+                },
+                {
+                  "id": "N4",
+                  "source": "notes",
+                  "text": "Has used ibuprofen as needed for a week.",
+                  "score": 0.5753
+                },
+                {
+                  "id": "N6",
+                  "source": "notes",
+                  "text": "Advised heat and stretching; physical therapy referral placed but not started.",
+                  "score": 0.5538
+                }
+              ]
+            },
+            "ok": true,
+            "duration_ms": 7,
+            "at": "2026-10-19T22:31:50.693280+00:00"
+          },
+          {
+            "seq": 7,
+            "kind": "tool_call",
+            "turn": 2,
+            "tool": "search_policy_guidelines",
+            "purpose": "Check policy details for RF1, C1, C2, C3",
+            "input": {
+              "query": "red-flag conservative therapy 6 weeks management change"
+            },
+            "observation_summary": "Found MP-RAD-101 \u00a72.2, MP-RAD-101 \u00a72.1, MP-RAD-101 \u00a71",
+            "observation": {
+              "sections": [
+                {
+                  "section_id": "MP-RAD-101 \u00a72.2",
+                  "heading": "Duration of symptoms and conservative therapy (criteria C1 and C2)",
+                  "text": "Symptoms must have lasted at least 6 weeks. Conservative therapy means at least 6 weeks of one or more of: supervised physical therapy or a structured home exercise program, NSAIDs or other analgesics unless contraindicated, activity modification, or chiropractic care. The record should state what was tried, for how long, and the response. A plan to start physical therapy does not count as a completed trial.",
+                  "score": 0.7728
+                },
+                {
+                  "section_id": "MP-RAD-101 \u00a72.1",
+                  "heading": "Red-flag findings (criterion RF1)",
+                  "text": "Red flags justify imaging without a trial of conservative therapy. They include saddle anesthesia, new urinary retention or overflow incontinence, new fecal incontinence, bilateral or progressive leg weakness, foot drop that is worsening, a history of cancer with new back pain, unexplained weight loss, fever with back pain or intravenous drug use, and significant trauma or osteoporosis with suspected fracture. Stable, long-standing numbness alone is not a red flag.",
+                  "score": 0.7079
+                },
+                {
+                  "section_id": "MP-RAD-101 \u00a71",
+                  "heading": "Scope",
+                  "text": "This policy applies to requests for MRI of the lumbar spine without contrast for adult members. Most acute low back pain improves within 4 to 6 weeks with conservative care, and early imaging without red flags does not improve outcomes. Imaging is therefore indicated either immediately when red flags are present, or after a documented failed trial of conservative therapy when the result will guide a procedure.",
+                  "score": 0.6728
+                }
+              ]
+            },
+            "ok": true,
+            "duration_ms": 7,
+            "at": "2026-10-19T22:31:53.958874+00:00"
+          },
+          {
+            "seq": 8,
+            "kind": "tool_call",
+            "turn": 3,
+            "tool": "search_clinical_record",
+            "purpose": "Search all sentences to ensure no missed notes on treatment plan or management change",
+            "input": {
+              "query": "management plan surgery injection referral"
+            },
+            "observation_summary": "Found N6 (0.67), N4 (0.62), N3 (0.57), N5 (0.54)",
+            "observation": {
+              "sentences": [
+                {
+                  "id": "N6",
+                  "source": "notes",
+                  "text": "Advised heat and stretching; physical therapy referral placed but not started.",
+                  "score": 0.667
+                },
+                {
+                  "id": "N4",
+                  "source": "notes",
+                  "text": "Has used ibuprofen as needed for a week.",
+                  "score": 0.6174
+                },
+                {
+                  "id": "N3",
+                  "source": "notes",
+                  "text": "Neurological exam normal.",
+                  "score": 0.5715
+                },
+                {
+                  "id": "N5",
+                  "source": "notes",
+                  "text": "He is worried something is seriously wrong and is asking for an MRI to be reassured.",
+                  "score": 0.5418
+                }
+              ]
+            },
+            "ok": true,
+            "duration_ms": 7,
+            "at": "2026-10-19T22:31:57.282754+00:00"
+          },
+          {
+            "seq": 9,
+            "kind": "tool_call",
+            "turn": 4,
+            "tool": "record_criterion",
+            "purpose": "Record assessment for red-flag findings",
+            "input": {
+              "criterion_id": "RF1",
+              "status": "not_met",
+              "evidence_ids": [
+                "N2"
+              ],
+              "rationale": "The record explicitly notes no bowel or bladder symptoms, no fever, no trauma, and normal neurological exam without motor deficit or signs of cauda equina, malignancy, infection, or fracture."
+            },
+            "observation_summary": "RF1 = not_met; remaining: C1, C2, C3",
+            "observation": {
+              "recorded": "RF1",
+              "status": "not_met",
+              "remaining_criteria": [
+                "C1",
+                "C2",
+                "C3"
+              ]
+            },
+            "ok": true,
+            "duration_ms": 0,
+            "at": "2026-10-19T22:32:00.933554+00:00"
+          },
+          {
+            "seq": 10,
+            "kind": "tool_call",
+            "turn": 4,
+            "tool": "record_criterion",
+            "purpose": "Record assessment for duration of low back pain",
+            "input": {
+              "criterion_id": "C1",
+              "status": "not_met",
+              "evidence_ids": [
+                "N1"
+              ],
+              "rationale": "Low back pain has persisted for 3 weeks, which is less than the required 6 weeks."
+            },
+            "observation_summary": "C1 = not_met; remaining: C2, C3",
+            "observation": {
+              "recorded": "C1",
+              "status": "not_met",
+              "remaining_criteria": [
+                "C2",
+                "C3"
+              ]
+            },
+            "ok": true,
+            "duration_ms": 0,
+            "at": "2026-10-19T22:32:00.933575+00:00"
+          },
+          {
+            "seq": 11,
+            "kind": "tool_call",
+            "turn": 4,
+            "tool": "record_criterion",
+            "purpose": "Record assessment for trial of conservative therapy",
+            "input": {
+              "criterion_id": "C2",
+              "status": "not_met",
+              "evidence_ids": [
+                "N1",
+                "N4",
+                "N6"
+              ],
+              "rationale": "Conservative therapy (ibuprofen for 1 week; physical therapy referral placed but not started) has not lasted 6 weeks within the last 6 months."
+            },
+            "observation_summary": "C2 = not_met; remaining: C3",
+            "observation": {
+              "recorded": "C2",
+              "status": "not_met",
+              "remaining_criteria": [
+                "C3"
+              ]
+            },
+            "ok": true,
+            "duration_ms": 0,
+            "at": "2026-10-19T22:32:00.933590+00:00"
+          },
+          {
+            "seq": 12,
+            "kind": "tool_call",
+            "turn": 4,
+            "tool": "record_criterion",
+            "purpose": "Record assessment for expected management change / candidate for intervention",
+            "input": {
+              "criterion_id": "C3",
+              "status": "insufficient_evidence",
+              "evidence_ids": [
+                "N5"
+              ],
+              "rationale": "The record documents that the patient is asking for an MRI to be reassured, and does not mention candidacy for surgery or an interventional procedure where imaging would change management."
+            },
+            "observation_summary": "C3 = insufficient_evidence; remaining: none",
+            "observation": {
+              "recorded": "C3",
+              "status": "insufficient_evidence",
+              "remaining_criteria": []
+            },
+            "ok": true,
+            "duration_ms": 0,
+            "at": "2026-10-19T22:32:00.933652+00:00"
+          },
+          {
+            "seq": 13,
+            "kind": "tool_call",
+            "turn": 5,
+            "tool": "finish_review",
+            "purpose": "Call finish_review",
+            "input": {
+              "summary": "The member is a 30-year-old with low back pain for 3 weeks following the start of a gym program. Regarding red-flag findings (RF1), the clinical notes document no fever, no trauma, no bowel or bladder symptoms, and a normal neurological exam, contradicting the presence of red flags. Regarding symptom duration (C1), low back pain has persisted for 3 weeks, which does not meet the 6-week requirement. Regarding conservative therapy (C2), the member has used ibuprofen for a week and has a physical therapy referral that has not yet been started, failing to meet the 6-week duration requirement within the last 6 months. Regarding management change (C3), the record notes the patient is requesting an MRI for reassurance, and there is insufficient evidence that the imaging result is expected to change management or that the member is a candidate for surgery or an interventional procedure.",
+              "cited_section_ids": [
+                "MP-RAD-101 \u00a71",
+                "MP-RAD-101 \u00a72.1",
+                "MP-RAD-101 \u00a72.2"
+              ]
+            },
+            "observation_summary": "Review finished",
+            "observation": {
+              "finished": true
+            },
+            "ok": true,
+            "duration_ms": 0,
+            "at": "2026-10-19T22:32:07.540321+00:00"
+          },
+          {
+            "seq": 14,
+            "kind": "step",
+            "node": "decide",
+            "message": "Deterministic gate: refer_to_physician_review. The documented evidence does not satisfy RF1 OR (C1 AND C2 AND C3).",
+            "at": "2026-10-19T22:32:07.540824+00:00"
+          },
+          {
+            "seq": 15,
+            "kind": "step",
+            "node": "guard",
+            "message": "All model-written text passed the output checks.",
+            "at": "2026-10-19T22:32:07.541669+00:00"
+          }
+        ]
+      },
+      "phi_leaks": []
+    },
+    {
+      "case_id": "PA-004",
+      "result": {
+        "review_id": "PAR-65BD639826",
+        "received_at": "2026-10-19T22:32:11.650868Z",
+        "decision_due_by": "2026-10-26T22:32:11.650868Z",
+        "plan_id": "commercial_ppo",
+        "service_code": "knee_arthroscopy",
+        "urgency": "standard",
+        "policy_id": "MP-ORT-204",
+        "recommendation": "recommend_approval",
+        "recommendation_reasons": [
+          "Policy criteria satisfied (C1 AND C2 AND C3 AND C4)."
+        ],
+        "criteria": [
+          {
+            "criterion_id": "C1",
+            "criterion_text": "Mechanical symptoms are documented: locking, catching, or the knee giving way, or a positive provocative test (McMurray or Thessaly) on examination.",
+            "status": "met",
+            "rationale": "The clinical notes document repeated episodes of locking and catching as well as a positive McMurray test on examination.",
+            "evidence": [
+              {
+                "id": "N4",
+                "source": "notes",
+                "text": "Since then he has had repeated episodes of the knee locking and catching, twice needing to wiggle the leg to unlock it."
+              },
+              {
+                "id": "N5",
+                "source": "notes",
+                "text": "McMurray test positive medially."
+              }
+            ]
+          },
+          {
+            "criterion_id": "C2",
+            "criterion_text": "MRI or arthrography confirms a meniscal tear that corresponds to the symptoms.",
+            "status": "met",
+            "rationale": "The MRI report confirms an oblique tear of the posterior horn of the medial meniscus corresponding to the symptoms.",
+            "evidence": [
+              {
+                "id": "D1",
+                "source": "document",
+                "text": "MRI RIGHT KNEE REPORT."
+              },
+              {
+                "id": "D2",
+                "source": "document",
+                "text": "Findings: Oblique tear of the posterior horn of the medial meniscus extending to the inferior articular surface."
+              },
+              {
+                "id": "D6",
+                "source": "document",
+                "text": "Impression: medial meniscal tear."
+              }
+            ]
+          },
+          {
+            "criterion_id": "C3",
+            "criterion_text": "At least 4 weeks of conservative therapy (physical therapy, activity modification, analgesics or an intra-articular injection) has failed, unless there is a locked knee that cannot be reduced.",
+            "status": "met",
+            "rationale": "The clinical notes document completion of 6 weeks of physical therapy without resolution of symptoms.",
+            "evidence": [
+              {
+                "id": "N6",
+                "source": "notes",
+                "text": "He completed 6 weeks of physical therapy with quadriceps strengthening without resolution of the locking."
+              }
+            ]
+          },
+          {
+            "criterion_id": "C4",
+            "criterion_text": "Imaging does not show advanced osteoarthritis (Kellgren-Lawrence grade 3 or 4) as the main source of the symptoms.",
+            "status": "met",
+            "rationale": "The imaging report documents Kellgren-Lawrence grade 1 osteoarthritis with preserved articular cartilage.",
+            "evidence": [
+              {
+                "id": "D4",
+                "source": "document",
+                "text": "Articular cartilage preserved; minimal marginal osteophytes, Kellgren-Lawrence grade 1."
+              }
+            ]
+          }
+        ],
+        "missing_information": [],
+        "diagnosis_checks": [
+          {
+            "code": "S83.241A",
+            "supported": true,
+            "description": "Other tear of medial meniscus, current injury, right knee, initial encounter"
+          }
+        ],
+        "cited_sections": [
+          {
+            "section_id": "MP-ORT-204 \u00a71",
+            "heading": "Scope"
+          },
+          {
+            "section_id": "MP-ORT-204 \u00a72.2",
+            "heading": "Imaging confirmation and osteoarthritis (criteria C2 and C4)"
+          },
+          {
+            "section_id": "MP-ORT-204 \u00a73",
+            "heading": "Documentation requirements"
+          }
+        ],
+        "reviewer_summary": "The clinical record documents mechanical symptoms (locking and catching) and a positive McMurray test, an MRI confirming a medial meniscal tear corresponding to the symptoms, completion of 6 weeks of physical therapy without resolution, and Kellgren-Lawrence grade 1 osteoarthritis on imaging. All criteria for knee arthroscopy for meniscal tear are met.",
+        "phi_redactions": {
+          "NAME": 1,
+          "DATE": 1,
+          "EMAIL": 1
+        },
+        "guard": {
+          "passed": true,
+          "issues": [],
+          "replaced_fields": []
+        },
+        "agent_completed": true,
+        "human_review_required": false,
+        "disclaimer": "Decision support only. Synthetic policies. A licensed clinician makes every adverse determination."
+      },
+      "trace": {
+        "review_id": "PAR-65BD639826",
+        "duration_ms": 20649,
+        "tool_calls": 10,
+        "llm_turns": 10,
+        "tokens": {
+          "input_tokens": 23729,
+          "output_tokens": 646
+        },
+        "events": [
+          {
+            "seq": 1,
+            "kind": "step",
+            "node": "intake",
+            "message": "PHI redacted before any model call: 1 DATE, 1 EMAIL, 1 NAME.",
+            "at": "2026-10-19T22:32:11.650839+00:00"
+          },
+          {
+            "seq": 2,
+            "kind": "step",
+            "node": "intake",
+            "message": "Policy: MP-ORT-204; applies to plan: True; supported diagnosis codes: 1/1.",
+            "at": "2026-10-19T22:32:11.650864+00:00"
+          },
+          {
+            "seq": 3,
+            "kind": "tool_call",
+            "turn": 1,
+            "tool": "search_policy_guidelines",
+            "purpose": "Understand definitions of criteria in MP-ORT-204",
+            "input": {
+              "query": "Surgery knee arthroscopy for meniscal tear criteria"
+            },
+            "observation_summary": "Found MP-ORT-204 \u00a71, MP-ORT-204 \u00a73, MP-ORT-204 \u00a72.2",
+            "observation": {
+              "sections": [
+                {
+                  "section_id": "MP-ORT-204 \u00a71",
+                  "heading": "Scope",
+                  "text": "This policy covers arthroscopic partial meniscectomy and meniscal repair. Degenerative meniscal tears in knees with advanced osteoarthritis respond as well to physical therapy as to arthroscopy, so the policy focuses on mechanical symptoms that match a tear seen on imaging.",
+                  "score": 0.8938
+                },
+                {
+                  "section_id": "MP-ORT-204 \u00a73",
+                  "heading": "Documentation requirements",
+                  "text": "Submit the orthopedic consultation note with examination findings, the MRI report, radiographs if available, and physical therapy notes or a summary of conservative care with dates.",
+                  "score": 0.8772
+                },
+                {
+                  "section_id": "MP-ORT-204 \u00a72.2",
+                  "heading": "Imaging confirmation and osteoarthritis (criteria C2 and C4)",
+                  "text": "An MRI report must describe a meniscal tear in the same compartment as the symptoms. Weight-bearing radiographs or MRI should grade osteoarthritis. Kellgren-Lawrence grade 0 to 2 is acceptable. Grade 3 or 4, or a description of bone-on-bone joint space loss, means arthroscopy is not expected to help and the case should go to physician review.",
+                  "score": 0.872
+                }
+              ]
+            },
+            "ok": true,
+            "duration_ms": 9,
+            "at": "2026-10-19T22:32:13.953431+00:00"
+          },
+          {
+            "seq": 4,
+            "kind": "tool_call",
+            "turn": 2,
+            "tool": "search_clinical_record",
+            "purpose": "Check for mechanical symptoms or provocative tests (C1)",
+            "input": {
+              "query": "mechanical symptoms locking catching giving way McMurray Thessaly"
+            },
+            "observation_summary": "Found N5 (0.76), N4 (0.73), D5 (0.61), D6 (0.59)",
+            "observation": {
+              "sentences": [
+                {
+                  "id": "N5",
+                  "source": "notes",
+                  "text": "McMurray test positive medially.",
+                  "score": 0.7642
+                },
+                {
+                  "id": "N4",
+                  "source": "notes",
+                  "text": "Since then he has had repeated episodes of the knee locking and catching, twice needing to wiggle the leg to unlock it.",
+                  "score": 0.7308
+                },
+                {
+                  "id": "D5",
+                  "source": "document",
+                  "text": "Small joint effusion.",
+                  "score": 0.6133
+                },
+                {
+                  "id": "D6",
+                  "source": "document",
+                  "text": "Impression: medial meniscal tear.",
+                  "score": 0.5852
+                }
+              ]
+            },
+            "ok": true,
+            "duration_ms": 8,
+            "at": "2026-10-19T22:32:17.687527+00:00"
+          },
+          {
+            "seq": 5,
+            "kind": "tool_call",
+            "turn": 3,
+            "tool": "record_criterion",
+            "purpose": "Record assessment for mechanical symptoms or positive provocative tests",
+            "input": {
+              "criterion_id": "C1",
+              "status": "met",
+              "evidence_ids": [
+                "N4",
+                "N5"
+              ],
+              "rationale": "The clinical notes document repeated episodes of locking and catching as well as a positive McMurray test on examination."
+            },
+            "observation_summary": "C1 = met; remaining: C2, C3, C4",
+            "observation": {
+              "recorded": "C1",
+              "status": "met",
+              "remaining_criteria": [
+                "C2",
+                "C3",
+                "C4"
+              ]
+            },
+            "ok": true,
+            "duration_ms": 0,
+            "at": "2026-10-19T22:32:18.321424+00:00"
+          },
+          {
+            "seq": 6,
+            "kind": "tool_call",
+            "turn": 4,
+            "tool": "search_clinical_record",
+            "purpose": "Check for MRI or arthrography confirming a meniscal tear corresponding to symptoms (C2)",
+            "input": {
+              "query": "MRI report meniscal tear medial lateral knee"
+            },
+            "observation_summary": "Found D6 (1.04), D1 (1.00), D2 (0.90), N7 (0.73)",
+            "observation": {
+              "sentences": [
+                {
+                  "id": "D6",
+                  "source": "document",
+                  "text": "Impression: medial meniscal tear.",
+                  "score": 1.039
+                },
+                {
+                  "id": "D1",
+                  "source": "document",
+                  "text": "MRI RIGHT KNEE REPORT.",
+                  "score": 0.9976
+                },
+                {
+                  "id": "D2",
+                  "source": "document",
+                  "text": "Findings: Oblique tear of the posterior horn of the medial meniscus extending to the inferior articular surface.",
+                  "score": 0.9011
+                },
+                {
+                  "id": "N7",
+                  "source": "notes",
+                  "text": "Plan: arthroscopic partial meniscectomy or repair.",
+                  "score": 0.7332
+                }
+              ]
+            },
+            "ok": true,
+            "duration_ms": 8,
+            "at": "2026-10-19T22:32:19.011956+00:00"
+          },
+          {
+            "seq": 7,
+            "kind": "tool_call",
+            "turn": 5,
+            "tool": "record_criterion",
+            "purpose": "Record assessment for imaging confirmation of meniscal tear",
+            "input": {
+              "criterion_id": "C2",
+              "status": "met",
+              "evidence_ids": [
+                "D1",
+                "D2",
+                "D6"
+              ],
+              "rationale": "The MRI report confirms an oblique tear of the posterior horn of the medial meniscus corresponding to the symptoms."
+            },
+            "observation_summary": "C2 = met; remaining: C3, C4",
+            "observation": {
+              "recorded": "C2",
+              "status": "met",
+              "remaining_criteria": [
+                "C3",
+                "C4"
+              ]
+            },
+            "ok": true,
+            "duration_ms": 0,
+            "at": "2026-10-19T22:32:21.291428+00:00"
+          },
+          {
+            "seq": 8,
+            "kind": "tool_call",
+            "turn": 6,
+            "tool": "search_clinical_record",
+            "purpose": "Check for conservative therapy duration and failure (C3)",
+            "input": {
+              "query": "conservative therapy physical therapy injection failed weeks months"
+            },
+            "observation_summary": "Found N6 (0.77), D5 (0.60), N5 (0.58), N3 (0.58)",
+            "observation": {
+              "sentences": [
+                {
+                  "id": "N6",
+                  "source": "notes",
+                  "text": "He completed 6 weeks of physical therapy with quadriceps strengthening without resolution of the locking.",
+                  "score": 0.7743
+                },
+                {
+                  "id": "D5",
+                  "source": "document",
+                  "text": "Small joint effusion.",
+                  "score": 0.5964
+                },
+                {
+                  "id": "N5",
+                  "source": "notes",
+                  "text": "McMurray test positive medially.",
+                  "score": 0.5809
+                },
+                {
+                  "id": "N3",
+                  "source": "notes",
+                  "text": "34-year-old amateur soccer player who twisted his right knee 10 weeks ago.",
+                  "score": 0.5772
+                }
+              ]
+            },
+            "ok": true,
+            "duration_ms": 8,
+            "at": "2026-10-19T22:32:22.065324+00:00"
+          },
+          {
+            "seq": 9,
+            "kind": "tool_call",
+            "turn": 7,
+            "tool": "record_criterion",
+            "purpose": "Record assessment for conservative therapy failure",
+            "input": {
+              "criterion_id": "C3",
+              "status": "met",
+              "evidence_ids": [
+                "N6"
+              ],
+              "rationale": "The clinical notes document completion of 6 weeks of physical therapy without resolution of symptoms."
+            },
+            "observation_summary": "C3 = met; remaining: C4",
+            "observation": {
+              "recorded": "C3",
+              "status": "met",
+              "remaining_criteria": [
+                "C4"
+              ]
+            },
+            "ok": true,
+            "duration_ms": 0,
+            "at": "2026-10-19T22:32:25.096434+00:00"
+          },
+          {
+            "seq": 10,
+            "kind": "tool_call",
+            "turn": 8,
+            "tool": "search_clinical_record",
+            "purpose": "Check for osteoarthritis grading on imaging (C4)",
+            "input": {
+              "query": "Kellgren Lawrence osteoarthritis grade joint space narrowing radiographs MRI"
+            },
+            "observation_summary": "Found D4 (0.89), D1 (0.80), D5 (0.75), D6 (0.69)",
+            "observation": {
+              "sentences": [
+                {
+                  "id": "D4",
+                  "source": "document",
+                  "text": "Articular cartilage preserved; minimal marginal osteophytes, Kellgren-Lawrence grade 1.",
+                  "score": 0.8941
+                },
+                {
+                  "id": "D1",
+                  "source": "document",
+                  "text": "MRI RIGHT KNEE REPORT.",
+                  "score": 0.8002
+                },
+                {
+                  "id": "D5",
+                  "source": "document",
+                  "text": "Small joint effusion.",
+                  "score": 0.7539
+                },
+                {
+                  "id": "D6",
+                  "source": "document",
+                  "text": "Impression: medial meniscal tear.",
+                  "score": 0.6879
+                }
+              ]
+            },
+            "ok": true,
+            "duration_ms": 10,
+            "at": "2026-10-19T22:32:27.869125+00:00"
+          },
+          {
+            "seq": 11,
+            "kind": "tool_call",
+            "turn": 9,
+            "tool": "record_criterion",
+            "purpose": "Record assessment for absence of advanced osteoarthritis",
+            "input": {
+              "criterion_id": "C4",
+              "status": "met",
+              "evidence_ids": [
+                "D4"
+              ],
+              "rationale": "The imaging report documents Kellgren-Lawrence grade 1 osteoarthritis with preserved articular cartilage."
+            },
+            "observation_summary": "C4 = met; remaining: none",
+            "observation": {
+              "recorded": "C4",
+              "status": "met",
+              "remaining_criteria": []
+            },
+            "ok": true,
+            "duration_ms": 0,
+            "at": "2026-10-19T22:32:28.809879+00:00"
+          },
+          {
+            "seq": 12,
+            "kind": "tool_call",
+            "turn": 10,
+            "tool": "finish_review",
+            "purpose": "Call finish_review",
+            "input": {
+              "summary": "The clinical record documents mechanical symptoms (locking and catching) and a positive McMurray test, an MRI confirming a medial meniscal tear corresponding to the symptoms, completion of 6 weeks of physical therapy without resolution, and Kellgren-Lawrence grade 1 osteoarthritis on imaging. All criteria for knee arthroscopy for meniscal tear are met.",
+              "cited_section_ids": [
+                "MP-ORT-204 \u00a71",
+                "MP-ORT-204 \u00a72.2",
+                "MP-ORT-204 \u00a73"
+              ]
+            },
+            "observation_summary": "Review finished",
+            "observation": {
+              "finished": true
+            },
+            "ok": true,
+            "duration_ms": 0,
+            "at": "2026-10-19T22:32:32.228754+00:00"
+          },
+          {
+            "seq": 13,
+            "kind": "step",
+            "node": "decide",
+            "message": "Deterministic gate: recommend_approval. Policy criteria satisfied (C1 AND C2 AND C3 AND C4).",
+            "at": "2026-10-19T22:32:32.229187+00:00"
+          },
+          {
+            "seq": 14,
+            "kind": "step",
+            "node": "guard",
+            "message": "All model-written text passed the output checks.",
+            "at": "2026-10-19T22:32:32.229728+00:00"
+          }
+        ]
+      },
+      "phi_leaks": []
+    },
+    {
+      "case_id": "PA-005",
+      "error": "GoogleRateLimitError: Error calling model 'gemini-3.5-flash-lite' (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your p"
+    },
+    {
+      "case_id": "PA-006",
+      "error": "GoogleRateLimitError: Error calling model 'gemini-3.5-flash-lite' (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your p"
+    },
+    {
+      "case_id": "PA-007",
+      "error": "GoogleRateLimitError: Error calling model 'gemini-3.5-flash-lite' (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your p"
+    },
+    {
+      "case_id": "PA-008",
+      "error": "GoogleRateLimitError: Error calling model 'gemini-3.5-flash-lite' (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your p"
+    },
+    {
+      "case_id": "PA-009",
+      "error": "GoogleRateLimitError: Error calling model 'gemini-3.5-flash-lite' (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your p"
+    },
+    {
+      "case_id": "PA-010",
+      "result": {
+        "review_id": "PAR-2718F400CD",
+        "received_at": "2026-10-19T22:51:20.754453Z",
+        "decision_due_by": "2026-10-26T22:51:20.754453Z",
+        "plan_id": "medicare_advantage",
+        "service_code": "glp1_weight_management",
+        "urgency": "standard",
+        "policy_id": "MP-RX-310",
+        "recommendation": "refer_to_physician_review",
+        "recommendation_reasons": [
+          "Policy MP-RX-310 does not apply to plan 'medicare_advantage'; benefit review needed."
+        ],
+        "criteria": [],
+        "missing_information": [],
+        "diagnosis_checks": [
+          {
+            "code": "E66.01",
+            "supported": true,
+            "description": "Morbid (severe) obesity due to excess calories"
+          }
+        ],
+        "cited_sections": [],
+        "reviewer_summary": "No automated summary; see recommendation reasons.",
+        "phi_redactions": {},
+        "guard": {
+          "passed": true,
+          "issues": [],
+          "replaced_fields": []
+        },
+        "agent_completed": false,
+        "human_review_required": true,
+        "disclaimer": "Decision support only. Synthetic policies. A licensed clinician makes every adverse determination."
+      },
+      "trace": {
+        "review_id": "PAR-2718F400CD",
+        "duration_ms": 34,
+        "tool_calls": 0,
+        "llm_turns": 0,
+        "tokens": {
+          "input_tokens": 0,
+          "output_tokens": 0
+        },
+        "events": [
+          {
+            "seq": 1,
+            "kind": "step",
+            "node": "intake",
+            "message": "PHI redacted before any model call: none found.",
+            "at": "2026-10-19T22:51:20.754401+00:00"
+          },
+          {
+            "seq": 2,
+            "kind": "step",
+            "node": "intake",
+            "message": "Policy: MP-RX-310; applies to plan: False; supported diagnosis codes: 1/1.",
+            "at": "2026-10-19T22:51:20.754447+00:00"
+          },
+          {
+            "seq": 3,
+            "kind": "step",
+            "node": "decide",
+            "message": "Deterministic gate: refer_to_physician_review. Policy MP-RX-310 does not apply to plan 'medicare_advantage'; benefit review needed.",
+            "at": "2026-10-19T22:51:20.755870+00:00"
+          },
+          {
+            "seq": 4,
+            "kind": "step",
+            "node": "guard",
+            "message": "All model-written text passed the output checks.",
+            "at": "2026-10-19T22:51:20.756612+00:00"
+          }
+        ]
+      },
+      "phi_leaks": []
+    },
+    {
+      "case_id": "PA-011",
+      "error": "GoogleRateLimitError: Error calling model 'gemini-3.5-flash-lite' (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your p"
+    },
+    {
+      "case_id": "PA-012",
+      "error": "GoogleRateLimitError: Error calling model 'gemini-3.5-flash-lite' (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your p"
+    },
+    {
+      "case_id": "PA-013",
+      "error": "GoogleRateLimitError: Error calling model 'gemini-3.5-flash-lite' (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your p"
+    },
+    {
+      "case_id": "PA-014",
+      "error": "GoogleRateLimitError: Error calling model 'gemini-3.5-flash-lite' (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your p"
+    },
+    {
+      "case_id": "PA-015",
+      "error": "GoogleRateLimitError: Error calling model 'gemini-3.5-flash-lite' (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your p"
+    },
+    {
+      "case_id": "PA-016",
+      "error": "GoogleRateLimitError: Error calling model 'gemini-3.5-flash-lite' (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your p"
+    }
+  ]
+}

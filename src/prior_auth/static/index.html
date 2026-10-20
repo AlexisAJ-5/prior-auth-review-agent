@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prior Auth Review</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <span class="mark" aria-hidden="true">PA</span>
+      <div>
+        <h1>Prior authorization pre-review</h1>
+        <p class="sub">Synthetic policies · decision support only · a clinician makes every adverse decision</p>
+      </div>
+    </div>
+    <span id="ready" class="pill pill-muted">checking…</span>
+  </header>
+
+  <main class="layout">
+    <section class="panel" aria-labelledby="form-title">
+      <div class="panel-head">
+        <h2 id="form-title">Request</h2>
+        <label class="inline">Example
+          <select id="examples"><option value="">Load a synthetic case…</option></select>
+        </label>
+      </div>
+      <form id="review-form">
+        <div class="row">
+          <label>Plan
+            <select name="plan_id" required>
+              <option value="commercial_ppo">Commercial PPO</option>
+              <option value="commercial_hmo">Commercial HMO</option>
+              <option value="medicare_advantage">Medicare Advantage</option>
+            </select>
+          </label>
+          <label>Urgency
+            <select name="urgency">
+              <option value="standard">Standard (7 days)</option>
+              <option value="expedited">Expedited (72 h)</option>
+            </select>
+          </label>
+        </div>
+        <label>Service <select name="service_code" id="service" required></select></label>
+        <label>Diagnosis codes (ICD-10-CM, comma-separated)
+          <input name="diagnosis_codes" placeholder="M54.42" required>
+        </label>
+        <label>Clinical notes
+          <textarea name="clinical_notes" rows="9" required
+            placeholder="Paste the referral or visit note. Identifiers are redacted before the model sees them."></textarea>
+        </label>
+        <label><span>Supporting document text <span class="hint">(optional)</span></span>
+          <textarea name="document_text" rows="3" placeholder="e.g. an MRI or PFT report"></textarea>
+        </label>
+        <label><span>Supporting PDF <span class="hint">(optional, text layer only)</span></span>
+          <input type="file" name="document" accept="application/pdf">
+        </label>
+        <button type="submit" id="submit">Run pre-review</button>
+        <p id="error" class="error" role="alert" hidden></p>
+      </form>
+    </section>
+
+    <section class="panel" aria-labelledby="result-title" aria-live="polite">
+      <div class="panel-head"><h2 id="result-title">Result</h2><span id="review-id" class="mono"></span></div>
+      <div id="empty" class="empty">Run a review to see the criteria assessment, the cited evidence and the agent trace.</div>
+      <div id="result" hidden>
+        <div class="verdict">
+          <span id="recommendation" class="badge"></span>
+          <span id="due" class="muted"></span>
+        </div>
+        <ul id="reasons" class="reasons"></ul>
+        <h3>Criteria</h3>
+        <div id="criteria"></div>
+        <div id="missing-block" hidden><h3>Information to request</h3><ul id="missing"></ul></div>
+        <h3>Reviewer summary</h3>
+        <p id="summary"></p>
+        <div class="facts">
+          <div><h4>Diagnosis codes</h4><ul id="dx"></ul></div>
+          <div><h4>Policy sections cited</h4><ul id="sections"></ul></div>
+          <div><h4>PHI redacted</h4><p id="phi"></p></div>
+          <div><h4>Output guard</h4><p id="guard"></p></div>
+        </div>
+        <details id="trace-box">
+          <summary>Agent trace <span id="trace-meta" class="muted"></span></summary>
+          <ol id="trace"></ol>
+        </details>
+      </div>
+    </section>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>
