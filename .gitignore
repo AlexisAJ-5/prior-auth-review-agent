@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+build/
+dist/
+
+# Tooling caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Local configuration and data
+.env
+storage/
+evals/results/*.db
+evals/results/latest.*   # scratch output; keep named runs (v1-baseline.md...) instead
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

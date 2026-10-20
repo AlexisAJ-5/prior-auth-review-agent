@@ -1,0 +1,93 @@
+[project]
+name = "prior-auth-review-agent"
+version = "0.1.0"
+description = "An agentic copilot that pre-reviews prior authorization requests against payer medical policies, with PHI redaction, grounded evidence and a human-in-the-loop decision gate."
+readme = "README.md"
+license = "MIT"
+authors = [{ name = "Alexis Abou Jaoude" }]
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn>=0.32",
+    "python-multipart>=0.0.20",
+    "pydantic>=2.10",
+    "pydantic-settings>=2.6",
+    "langgraph>=1.0",
+    "langchain-core>=1.0",
+    "langchain-openai>=1.0",
+    "qdrant-client>=1.12",
+    "fastembed>=0.5",
+    "numpy>=1.26",
+    "pypdf>=5.0",
+    "langchain-google-genai>=3.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3",
+    "pytest-cov>=6.0",
+    "httpx>=0.28",
+    "ruff>=0.8",
+    "mypy>=1.13",
+    "pre-commit>=4.0",
+    "fpdf2>=2.8",
+]
+
+[project.scripts]
+prior-auth-eval = "prior_auth.evaluation:main"
+
+[build-system]
+requires = ["hatchling>=1.26"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/prior_auth"]
+
+# ---------------------------------------------------------------- ruff
+[tool.ruff]
+line-length = 110
+target-version = "py312"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = [
+    "E", "W", "F",   # pycodestyle, pyflakes
+    "I",             # isort
+    "B",             # bugbear
+    "UP",            # pyupgrade
+    "SIM",           # simplify
+    "RUF",           # ruff-specific
+    "S",             # bandit (security)
+    "PT",            # pytest style
+    "N",             # naming
+]
+ignore = ["S101"]    # assert is fine in tests
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["S", "N802", "PT018", "E741"]
+
+# ---------------------------------------------------------------- mypy
+[tool.mypy]
+python_version = "3.12"
+strict = true
+mypy_path = "src"
+packages = ["prior_auth"]
+plugins = ["pydantic.mypy"]
+
+[[tool.mypy.overrides]]
+module = ["fastembed.*", "qdrant_client.*", "pypdf.*"]
+ignore_missing_imports = true
+
+# ---------------------------------------------------------------- pytest
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q --strict-markers"
+markers = ["live: needs a real LLM API key (deselected by default in CI)"]
+
+[tool.coverage.run]
+source = ["prior_auth"]
+branch = true
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
