@@ -1,0 +1,23 @@
+{
+  "case_id": "PA-008",
+  "summary": "GLP-1: qualifying BMI but no lifestyle program or concurrent-therapy information",
+  "request": {
+    "plan_id": "commercial_hmo",
+    "service_code": "glp1_weight_management",
+    "diagnosis_codes": [
+      "E66.9",
+      "Z68.30"
+    ],
+    "urgency": "standard",
+    "clinical_notes": "29-year-old seen for weight concerns. BMI 31.5 kg/m2 today. Blood pressure 124/78. Labs normal. Discussed treatment options and prescribed a GLP-1 receptor agonist for weight management."
+  },
+  "expected": {
+    "recommendation": "request_more_information",
+    "criteria": {
+      "C1": "met",
+      "C2": "met",
+      "C3": "insufficient_evidence",
+      "C4": "insufficient_evidence"
+    }
+  }
+}

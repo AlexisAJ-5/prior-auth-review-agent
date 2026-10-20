@@ -1,0 +1,20 @@
+{
+  "case_id": "PA-012",
+  "summary": "In-lab sleep study requested for uncomplicated suspected OSA",
+  "request": {
+    "plan_id": "commercial_ppo",
+    "service_code": "polysomnography",
+    "diagnosis_codes": [
+      "G47.33"
+    ],
+    "urgency": "standard",
+    "clinical_notes": "Patient Kevin Tran, DOB 02/02/1983. 43-year-old with loud snoring and daytime sleepiness, Epworth 12. BMI 36 and hypertension controlled on amlodipine. No lung, heart or neuromuscular disease, no opioid use. No prior sleep testing. Patient prefers an in-lab study."
+  },
+  "expected": {
+    "recommendation": "refer_to_physician_review",
+    "criteria": {
+      "C1": "met",
+      "C2": "not_met"
+    }
+  }
+}

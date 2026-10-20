@@ -1,0 +1,22 @@
+{
+  "case_id": "PA-003",
+  "summary": "Lumbar MRI for 3 weeks of uncomplicated back pain, requested for reassurance",
+  "request": {
+    "plan_id": "commercial_ppo",
+    "service_code": "mri_lumbar_spine",
+    "diagnosis_codes": [
+      "M54.50"
+    ],
+    "urgency": "standard",
+    "clinical_notes": "30-year-old software engineer with low back pain for 3 weeks after starting a new gym program. No leg pain, no numbness, no weakness, no bowel or bladder symptoms, no fever, no trauma. Neurological exam normal. Has used ibuprofen as needed for a week. He is worried something is seriously wrong and is asking for an MRI to be reassured. Advised heat and stretching; physical therapy referral placed but not started."
+  },
+  "expected": {
+    "recommendation": "refer_to_physician_review",
+    "criteria": {
+      "RF1": "not_met",
+      "C1": "not_met",
+      "C2": "not_met",
+      "C3": "not_met"
+    }
+  }
+}

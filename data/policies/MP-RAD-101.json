@@ -1,0 +1,67 @@
+{
+  "policy_id": "MP-RAD-101",
+  "title": "Advanced imaging: MRI of the lumbar spine",
+  "service_code": "mri_lumbar_spine",
+  "service_name": "MRI lumbar spine without contrast",
+  "version": "2026.1",
+  "effective_date": "2026-01-01",
+  "synthetic": true,
+  "applies_to_plans": ["commercial_ppo", "commercial_hmo", "medicare_advantage"],
+  "supported_diagnoses": {
+    "M54.16": "Radiculopathy, lumbar region",
+    "M54.17": "Radiculopathy, lumbosacral region",
+    "M54.41": "Lumbago with sciatica, right side",
+    "M54.42": "Lumbago with sciatica, left side",
+    "M54.50": "Low back pain, unspecified",
+    "M51.16": "Intervertebral disc disorders with radiculopathy, lumbar region",
+    "M48.061": "Spinal stenosis, lumbar region without neurogenic claudication",
+    "G83.4": "Cauda equina syndrome",
+    "C79.51": "Secondary malignant neoplasm of bone"
+  },
+  "criteria": [
+    {
+      "id": "RF1",
+      "text": "At least one red-flag finding is documented: suspected cauda equina syndrome (saddle anesthesia, new urinary retention or incontinence), progressive or severe motor deficit, suspected malignancy, suspected spinal infection, or suspected fracture."
+    },
+    {
+      "id": "C1",
+      "text": "Low back pain, with or without radiculopathy, has persisted for at least 6 weeks."
+    },
+    {
+      "id": "C2",
+      "text": "A trial of conservative therapy of at least 6 weeks within the last 6 months is documented (for example physical therapy, NSAIDs, activity modification) and has not resolved the symptoms."
+    },
+    {
+      "id": "C3",
+      "text": "The imaging result is expected to change management: the member is a candidate for surgery or an interventional procedure such as an epidural steroid injection."
+    }
+  ],
+  "logic": {"any_of": ["RF1", {"all_of": ["C1", "C2", "C3"]}]},
+  "sections": [
+    {
+      "section_id": "MP-RAD-101 §1",
+      "heading": "Scope",
+      "text": "This policy applies to requests for MRI of the lumbar spine without contrast for adult members. Most acute low back pain improves within 4 to 6 weeks with conservative care, and early imaging without red flags does not improve outcomes. Imaging is therefore indicated either immediately when red flags are present, or after a documented failed trial of conservative therapy when the result will guide a procedure."
+    },
+    {
+      "section_id": "MP-RAD-101 §2.1",
+      "heading": "Red-flag findings (criterion RF1)",
+      "text": "Red flags justify imaging without a trial of conservative therapy. They include saddle anesthesia, new urinary retention or overflow incontinence, new fecal incontinence, bilateral or progressive leg weakness, foot drop that is worsening, a history of cancer with new back pain, unexplained weight loss, fever with back pain or intravenous drug use, and significant trauma or osteoporosis with suspected fracture. Stable, long-standing numbness alone is not a red flag."
+    },
+    {
+      "section_id": "MP-RAD-101 §2.2",
+      "heading": "Duration of symptoms and conservative therapy (criteria C1 and C2)",
+      "text": "Symptoms must have lasted at least 6 weeks. Conservative therapy means at least 6 weeks of one or more of: supervised physical therapy or a structured home exercise program, NSAIDs or other analgesics unless contraindicated, activity modification, or chiropractic care. The record should state what was tried, for how long, and the response. A plan to start physical therapy does not count as a completed trial."
+    },
+    {
+      "section_id": "MP-RAD-101 §2.3",
+      "heading": "Impact on management (criterion C3)",
+      "text": "The request should state how the result will be used, for example surgical planning by a spine surgeon, or planning of an epidural steroid injection or other interventional procedure. Imaging requested only for reassurance, or because the member asked for it, does not meet this criterion."
+    },
+    {
+      "section_id": "MP-RAD-101 §3",
+      "heading": "Documentation requirements",
+      "text": "Submit recent clinical notes with symptom onset and duration, neurological examination findings, conservative treatments with dates and duration, and the planned use of the imaging. Prior lumbar imaging within 12 months should be listed. Missing documentation results in a request for additional information, not a denial."
+    }
+  ]
+}

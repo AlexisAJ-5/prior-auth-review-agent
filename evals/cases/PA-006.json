@@ -1,0 +1,22 @@
+{
+  "case_id": "PA-006",
+  "summary": "Knee arthroscopy with catching and MRI tear but no record of conservative care or arthritis grade",
+  "request": {
+    "plan_id": "commercial_hmo",
+    "service_code": "knee_arthroscopy",
+    "diagnosis_codes": [
+      "S83.282A"
+    ],
+    "urgency": "standard",
+    "clinical_notes": "28-year-old with left knee pain after a skiing fall. Reports the knee catches when pivoting and has given way twice. Thessaly test positive laterally. MRI report attached by the office states a horizontal tear of the lateral meniscus body. Surgeon recommends arthroscopy."
+  },
+  "expected": {
+    "recommendation": "request_more_information",
+    "criteria": {
+      "C1": "met",
+      "C2": "met",
+      "C3": "insufficient_evidence",
+      "C4": "insufficient_evidence"
+    }
+  }
+}

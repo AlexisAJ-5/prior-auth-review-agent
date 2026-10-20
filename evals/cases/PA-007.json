@@ -1,0 +1,22 @@
+{
+  "case_id": "PA-007",
+  "summary": "GLP-1: BMI 34, 6-month dietitian program, no other GLP-1",
+  "request": {
+    "plan_id": "commercial_ppo",
+    "service_code": "glp1_weight_management",
+    "diagnosis_codes": [
+      "E66.811"
+    ],
+    "urgency": "standard",
+    "clinical_notes": "Patient: Aisha Bello. Phone 212-555-0187.\n45-year-old with obesity class 1. Weight 98 kg, height 1.69 m, BMI 34.2 measured today. Hypertension treated with lisinopril. She has followed a dietitian-led reduced-calorie meal plan and a walking program of 150 minutes per week for the past 6 months, with monthly follow-up visits, and lost 2 kg. No current or prior GLP-1 medication; she is not taking any other weight-loss drug. She will continue the dietitian program during treatment."
+  },
+  "expected": {
+    "recommendation": "recommend_approval",
+    "criteria": {
+      "C1": "met",
+      "C2": "met",
+      "C3": "met",
+      "C4": "met"
+    }
+  }
+}

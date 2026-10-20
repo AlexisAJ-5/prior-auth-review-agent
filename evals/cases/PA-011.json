@@ -1,0 +1,22 @@
+{
+  "case_id": "PA-011",
+  "summary": "In-lab sleep study: OSA symptoms with severe COPD on home oxygen",
+  "request": {
+    "plan_id": "medicare_advantage",
+    "service_code": "polysomnography",
+    "diagnosis_codes": [
+      "G47.33",
+      "R06.83"
+    ],
+    "urgency": "standard",
+    "clinical_notes": "68-year-old referred by pulmonology. Wife reports loud nightly snoring and pauses in breathing. Epworth Sleepiness Scale 14. He has COPD on 2 L home oxygen at night. Requesting attended polysomnography with oxygen titration.",
+    "document_text": "PULMONARY FUNCTION TEST SUMMARY. FEV1 38 percent predicted, FEV1/FVC 0.52. Interpretation: severe obstructive ventilatory defect consistent with COPD GOLD grade 3."
+  },
+  "expected": {
+    "recommendation": "recommend_approval",
+    "criteria": {
+      "C1": "met",
+      "C2": "met"
+    }
+  }
+}

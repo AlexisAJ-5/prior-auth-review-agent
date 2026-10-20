@@ -1,0 +1,64 @@
+{
+  "policy_id": "MP-ORT-204",
+  "title": "Surgery: knee arthroscopy for meniscal tear",
+  "service_code": "knee_arthroscopy",
+  "service_name": "Arthroscopic meniscectomy or meniscal repair, knee",
+  "version": "2026.1",
+  "effective_date": "2026-01-01",
+  "synthetic": true,
+  "applies_to_plans": ["commercial_ppo", "commercial_hmo", "medicare_advantage"],
+  "supported_diagnoses": {
+    "S83.241A": "Other tear of medial meniscus, current injury, right knee, initial encounter",
+    "S83.242A": "Other tear of medial meniscus, current injury, left knee, initial encounter",
+    "S83.281A": "Other tear of lateral meniscus, current injury, right knee, initial encounter",
+    "S83.282A": "Other tear of lateral meniscus, current injury, left knee, initial encounter",
+    "M23.221": "Derangement of posterior horn of medial meniscus due to old tear or injury, right knee",
+    "M23.222": "Derangement of posterior horn of medial meniscus due to old tear or injury, left knee"
+  },
+  "criteria": [
+    {
+      "id": "C1",
+      "text": "Mechanical symptoms are documented: locking, catching, or the knee giving way, or a positive provocative test (McMurray or Thessaly) on examination."
+    },
+    {
+      "id": "C2",
+      "text": "MRI or arthrography confirms a meniscal tear that corresponds to the symptoms."
+    },
+    {
+      "id": "C3",
+      "text": "At least 4 weeks of conservative therapy (physical therapy, activity modification, analgesics or an intra-articular injection) has failed, unless there is a locked knee that cannot be reduced."
+    },
+    {
+      "id": "C4",
+      "text": "Imaging does not show advanced osteoarthritis (Kellgren-Lawrence grade 3 or 4) as the main source of the symptoms."
+    }
+  ],
+  "logic": {"all_of": ["C1", "C2", "C3", "C4"]},
+  "sections": [
+    {
+      "section_id": "MP-ORT-204 §1",
+      "heading": "Scope",
+      "text": "This policy covers arthroscopic partial meniscectomy and meniscal repair. Degenerative meniscal tears in knees with advanced osteoarthritis respond as well to physical therapy as to arthroscopy, so the policy focuses on mechanical symptoms that match a tear seen on imaging."
+    },
+    {
+      "section_id": "MP-ORT-204 §2.1",
+      "heading": "Mechanical symptoms (criterion C1)",
+      "text": "Mechanical symptoms are true locking (the knee gets stuck and must be manipulated to straighten), catching, or instability with giving way. A positive McMurray test or Thessaly test documented by the examining clinician also satisfies this criterion. Pain and swelling alone are not mechanical symptoms."
+    },
+    {
+      "section_id": "MP-ORT-204 §2.2",
+      "heading": "Imaging confirmation and osteoarthritis (criteria C2 and C4)",
+      "text": "An MRI report must describe a meniscal tear in the same compartment as the symptoms. Weight-bearing radiographs or MRI should grade osteoarthritis. Kellgren-Lawrence grade 0 to 2 is acceptable. Grade 3 or 4, or a description of bone-on-bone joint space loss, means arthroscopy is not expected to help and the case should go to physician review."
+    },
+    {
+      "section_id": "MP-ORT-204 §2.3",
+      "heading": "Conservative therapy (criterion C3)",
+      "text": "At least 4 weeks of physical therapy or a supervised exercise program, with or without analgesics or a corticosteroid injection, must be documented with the response. A locked knee that cannot be reduced is a surgical urgency and does not require a trial of conservative therapy."
+    },
+    {
+      "section_id": "MP-ORT-204 §3",
+      "heading": "Documentation requirements",
+      "text": "Submit the orthopedic consultation note with examination findings, the MRI report, radiographs if available, and physical therapy notes or a summary of conservative care with dates."
+    }
+  ]
+}
