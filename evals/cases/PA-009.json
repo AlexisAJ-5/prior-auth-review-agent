@@ -1,0 +1,22 @@
+{
+  "case_id": "PA-009",
+  "summary": "GLP-1: BMI 28 with prediabetes only",
+  "request": {
+    "plan_id": "commercial_ppo",
+    "service_code": "glp1_weight_management",
+    "diagnosis_codes": [
+      "E66.09"
+    ],
+    "urgency": "standard",
+    "clinical_notes": "51-year-old with BMI 28.1 kg/m2 and prediabetes (HbA1c 6.0 percent). Blood pressure 118/76, lipid panel within normal limits, no sleep apnea symptoms. Completed a 4-month structured lifestyle program with a dietitian and gym membership. Not on any other GLP-1 product."
+  },
+  "expected": {
+    "recommendation": "refer_to_physician_review",
+    "criteria": {
+      "C1": "met",
+      "C2": "not_met",
+      "C3": "met",
+      "C4": "met"
+    }
+  }
+}

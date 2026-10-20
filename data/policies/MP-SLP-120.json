@@ -1,0 +1,50 @@
+{
+  "policy_id": "MP-SLP-120",
+  "title": "Sleep medicine: attended in-lab polysomnography",
+  "service_code": "polysomnography",
+  "service_name": "Attended in-laboratory polysomnography",
+  "version": "2026.1",
+  "effective_date": "2026-01-01",
+  "synthetic": true,
+  "applies_to_plans": ["commercial_ppo", "commercial_hmo", "medicare_advantage"],
+  "supported_diagnoses": {
+    "G47.33": "Obstructive sleep apnea (adult) (pediatric)",
+    "G47.30": "Sleep apnea, unspecified",
+    "G47.31": "Primary central sleep apnea",
+    "R06.83": "Snoring",
+    "G47.10": "Hypersomnia, unspecified"
+  },
+  "criteria": [
+    {
+      "id": "C1",
+      "text": "Symptoms suggest a sleep-related breathing disorder: loud snoring, witnessed apneas or gasping, or excessive daytime sleepiness (for example an Epworth Sleepiness Scale score above 10)."
+    },
+    {
+      "id": "C2",
+      "text": "An attended in-lab study is needed instead of a home sleep apnea test because of at least one of: moderate to severe pulmonary disease, neuromuscular disease, heart failure, suspected central sleep apnea, chronic opioid use, or a prior home test that was negative, inconclusive or technically inadequate."
+    }
+  ],
+  "logic": {"all_of": ["C1", "C2"]},
+  "sections": [
+    {
+      "section_id": "MP-SLP-120 §1",
+      "heading": "Scope",
+      "text": "A home sleep apnea test is the preferred first test for uncomplicated adults with a high pretest probability of obstructive sleep apnea. Attended in-lab polysomnography is reserved for members where a home test is likely to be inaccurate or has already failed."
+    },
+    {
+      "section_id": "MP-SLP-120 §2.1",
+      "heading": "Symptoms (criterion C1)",
+      "text": "Qualifying symptoms are habitual loud snoring, apneas or choking witnessed by a bed partner, nocturnal gasping, and excessive daytime sleepiness. An Epworth Sleepiness Scale score above 10 supports sleepiness. Insomnia alone does not satisfy this criterion."
+    },
+    {
+      "section_id": "MP-SLP-120 §2.2",
+      "heading": "Reasons for an attended study (criterion C2)",
+      "text": "An in-lab study is appropriate with moderate to severe COPD or other pulmonary disease, neuromuscular disease, heart failure with reduced ejection fraction, suspected central sleep apnea or hypoventilation, chronic opioid use, or a prior home sleep apnea test that was negative, inconclusive or technically inadequate despite strong clinical suspicion. Obesity or hypertension alone is not a reason to skip the home test."
+    },
+    {
+      "section_id": "MP-SLP-120 §3",
+      "heading": "Documentation requirements",
+      "text": "Submit the sleep evaluation with symptoms, the Epworth score if available, relevant comorbidities, and the result of any prior home sleep apnea test."
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "case_id": "PA-014",
+  "summary": "PT extension after knee replacement with measured progress and a clear plan",
+  "request": {
+    "plan_id": "medicare_advantage",
+    "service_code": "physical_therapy_extension",
+    "diagnosis_codes": [
+      "Z96.651",
+      "Z47.1"
+    ],
+    "urgency": "standard",
+    "clinical_notes": "Progress note, visit 18. Right total knee arthroplasty 7 weeks ago. Knee flexion improved from 85 to 110 degrees and timed up-and-go from 18 to 11 seconds since the initial evaluation. Still unable to climb stairs reciprocally. Plan of care: 8 more visits, twice weekly for 4 weeks, goals of 120 degrees flexion and reciprocal stair climbing. Treatment includes manual therapy for joint mobility and gait training, which require a therapist."
+  },
+  "expected": {
+    "recommendation": "recommend_approval",
+    "criteria": {
+      "C1": "met",
+      "C2": "met",
+      "C3": "met"
+    }
+  }
+}

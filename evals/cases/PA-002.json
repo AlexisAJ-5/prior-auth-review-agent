@@ -1,0 +1,23 @@
+{
+  "case_id": "PA-002",
+  "summary": "Lumbar MRI with cauda equina red flags, expedited",
+  "request": {
+    "plan_id": "commercial_hmo",
+    "service_code": "mri_lumbar_spine",
+    "diagnosis_codes": [
+      "G83.4",
+      "M54.50"
+    ],
+    "urgency": "expedited",
+    "clinical_notes": "ED note. Name: Maria Delgado, member ID ZX448812093.\n41-year-old with low back pain for 10 days, worse over the last 48 hours. Since yesterday she reports numbness in the groin and inner thighs and has had difficulty starting urination; bladder scan shows 650 mL post-void residual. Exam shows saddle anesthesia and reduced ankle dorsiflexion strength on both sides (4/5). No prior physical therapy. Neurosurgery consulted for possible emergency decompression; urgent MRI requested to confirm cauda equina compression."
+  },
+  "expected": {
+    "recommendation": "recommend_approval",
+    "criteria": {
+      "RF1": "met",
+      "C1": "not_met",
+      "C2": "not_met",
+      "C3": "met"
+    }
+  }
+}

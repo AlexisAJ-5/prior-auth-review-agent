@@ -1,0 +1,55 @@
+{
+  "policy_id": "MP-REH-050",
+  "title": "Rehabilitation: outpatient physical therapy beyond 20 visits",
+  "service_code": "physical_therapy_extension",
+  "service_name": "Additional outpatient physical therapy visits (beyond 20 per year)",
+  "version": "2026.1",
+  "effective_date": "2026-01-01",
+  "synthetic": true,
+  "applies_to_plans": ["commercial_ppo", "commercial_hmo", "medicare_advantage"],
+  "supported_diagnoses": {
+    "M54.50": "Low back pain, unspecified",
+    "M25.561": "Pain in right knee",
+    "M25.562": "Pain in left knee",
+    "Z96.651": "Presence of right artificial knee joint",
+    "Z96.652": "Presence of left artificial knee joint",
+    "Z47.1": "Aftercare following joint replacement surgery"
+  },
+  "criteria": [
+    {
+      "id": "C1",
+      "text": "Measurable functional improvement during the visits already completed is documented with objective measures (for example range of motion, strength, gait, or a validated outcome score)."
+    },
+    {
+      "id": "C2",
+      "text": "An updated plan of care states specific functional goals, the number of additional visits requested, and the expected time to reach the goals."
+    },
+    {
+      "id": "C3",
+      "text": "The services require the skills of a licensed therapist and cannot reasonably be done through a home exercise program alone."
+    }
+  ],
+  "logic": {"all_of": ["C1", "C2", "C3"]},
+  "sections": [
+    {
+      "section_id": "MP-REH-050 §1",
+      "heading": "Scope",
+      "text": "The plan covers 20 outpatient physical therapy visits per year without review. Additional visits are reviewed for ongoing benefit. Maintenance therapy without expected improvement is not the purpose of this extension."
+    },
+    {
+      "section_id": "MP-REH-050 §2.1",
+      "heading": "Functional improvement (criterion C1)",
+      "text": "Progress must be shown with objective numbers compared with the initial evaluation, such as knee flexion degrees, timed up-and-go seconds, strength grades, or scores like the Oswestry Disability Index or KOOS. Statements such as 'patient is doing better' without measures do not meet the criterion."
+    },
+    {
+      "section_id": "MP-REH-050 §2.2",
+      "heading": "Plan of care (criterion C2)",
+      "text": "The updated plan of care lists measurable goals, the number of visits requested, the frequency, and the expected duration. Open-ended requests ('continue PT') are not sufficient."
+    },
+    {
+      "section_id": "MP-REH-050 §2.3",
+      "heading": "Skilled services (criterion C3)",
+      "text": "Skilled services include manual therapy, gait training after joint replacement, neuromuscular re-education and progression of a program that needs a therapist's judgment. Exercises the member already performs independently at home are not skilled services."
+    }
+  ]
+}

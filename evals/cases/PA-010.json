@@ -1,0 +1,17 @@
+{
+  "case_id": "PA-010",
+  "summary": "GLP-1 requested under a plan the policy does not apply to",
+  "request": {
+    "plan_id": "medicare_advantage",
+    "service_code": "glp1_weight_management",
+    "diagnosis_codes": [
+      "E66.01"
+    ],
+    "urgency": "standard",
+    "clinical_notes": "70-year-old with BMI 41 kg/m2, type 2 diabetes and hypertension. 6 months of dietitian counseling. Requesting GLP-1 receptor agonist for weight management."
+  },
+  "expected": {
+    "recommendation": "refer_to_physician_review",
+    "criteria": {}
+  }
+}

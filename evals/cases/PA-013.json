@@ -1,0 +1,20 @@
+{
+  "case_id": "PA-013",
+  "summary": "In-lab sleep study with criteria met but an unrelated diagnosis code",
+  "request": {
+    "plan_id": "commercial_hmo",
+    "service_code": "polysomnography",
+    "diagnosis_codes": [
+      "M54.50"
+    ],
+    "urgency": "standard",
+    "clinical_notes": "55-year-old with witnessed apneas, loud snoring and Epworth 16. A home sleep apnea test last month was technically inadequate because of oximeter signal loss for most of the night. Requesting attended polysomnography."
+  },
+  "expected": {
+    "recommendation": "refer_to_physician_review",
+    "criteria": {
+      "C1": "met",
+      "C2": "met"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "case_id": "PA-004",
+  "summary": "Knee arthroscopy: locking episodes, MRI tear, failed PT, no arthritis",
+  "request": {
+    "plan_id": "commercial_ppo",
+    "service_code": "knee_arthroscopy",
+    "diagnosis_codes": [
+      "S83.241A"
+    ],
+    "urgency": "standard",
+    "clinical_notes": "Orthopedic consult. Patient Lucas Martin, DOB 09/30/1991, email lucas.martin@example.com.\n34-year-old amateur soccer player who twisted his right knee 10 weeks ago. Since then he has had repeated episodes of the knee locking and catching, twice needing to wiggle the leg to unlock it. McMurray test positive medially. He completed 6 weeks of physical therapy with quadriceps strengthening without resolution of the locking. Plan: arthroscopic partial meniscectomy or repair.",
+    "document_text": "MRI RIGHT KNEE REPORT. Findings: Oblique tear of the posterior horn of the medial meniscus extending to the inferior articular surface. Cruciate and collateral ligaments intact. Articular cartilage preserved; minimal marginal osteophytes, Kellgren-Lawrence grade 1. Small joint effusion. Impression: medial meniscal tear."
+  },
+  "expected": {
+    "recommendation": "recommend_approval",
+    "criteria": {
+      "C1": "met",
+      "C2": "met",
+      "C3": "met",
+      "C4": "met"
+    }
+  }
+}

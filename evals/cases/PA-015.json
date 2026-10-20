@@ -1,0 +1,21 @@
+{
+  "case_id": "PA-015",
+  "summary": "PT extension with no measures and an independent home program",
+  "request": {
+    "plan_id": "commercial_ppo",
+    "service_code": "physical_therapy_extension",
+    "diagnosis_codes": [
+      "M54.50"
+    ],
+    "urgency": "standard",
+    "clinical_notes": "Visit 20 for chronic low back pain. Patient reports feeling better overall. She performs her home exercise program independently every day without cues. Plan: continue PT."
+  },
+  "expected": {
+    "recommendation": "refer_to_physician_review",
+    "criteria": {
+      "C1": "not_met",
+      "C2": "not_met",
+      "C3": "not_met"
+    }
+  }
+}

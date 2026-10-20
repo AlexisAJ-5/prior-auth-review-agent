@@ -1,0 +1,22 @@
+{
+  "case_id": "PA-016",
+  "summary": "Lumbar MRI with surgical referral but unclear length of conservative therapy",
+  "request": {
+    "plan_id": "commercial_hmo",
+    "service_code": "mri_lumbar_spine",
+    "diagnosis_codes": [
+      "M54.16"
+    ],
+    "urgency": "standard",
+    "clinical_notes": "Patient: Sofia Rossi, 123 Market Street, San Francisco.\n47-year-old with right-sided sciatica for 10 weeks. Has tried physical therapy, number of sessions and duration not documented, and takes ibuprofen. Pain persists. Neurological exam: positive straight leg raise on the right, normal strength. No red-flag symptoms. Referred to spine surgery for evaluation of microdiscectomy; MRI requested for surgical planning."
+  },
+  "expected": {
+    "recommendation": "request_more_information",
+    "criteria": {
+      "RF1": "not_met",
+      "C1": "met",
+      "C2": "insufficient_evidence",
+      "C3": "met"
+    }
+  }
+}

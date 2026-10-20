@@ -1,0 +1,64 @@
+{
+  "policy_id": "MP-RX-310",
+  "title": "Pharmacy: GLP-1 receptor agonists for chronic weight management",
+  "service_code": "glp1_weight_management",
+  "service_name": "GLP-1 receptor agonist for chronic weight management",
+  "version": "2026.2",
+  "effective_date": "2026-04-01",
+  "synthetic": true,
+  "applies_to_plans": ["commercial_ppo", "commercial_hmo"],
+  "supported_diagnoses": {
+    "E66.01": "Morbid (severe) obesity due to excess calories",
+    "E66.09": "Other obesity due to excess calories",
+    "E66.811": "Obesity, class 1",
+    "E66.812": "Obesity, class 2",
+    "E66.813": "Obesity, class 3",
+    "E66.9": "Obesity, unspecified",
+    "Z68.30": "Body mass index [BMI] 30.0-30.9, adult",
+    "Z68.35": "Body mass index [BMI] 35.0-35.9, adult",
+    "Z68.41": "Body mass index [BMI] 40.0-44.9, adult"
+  },
+  "criteria": [
+    {"id": "C1", "text": "The member is 18 years of age or older."},
+    {
+      "id": "C2",
+      "text": "Baseline BMI is 30 kg/m2 or higher, or 27 kg/m2 or higher with at least one weight-related comorbidity (hypertension, type 2 diabetes, dyslipidemia, or obstructive sleep apnea)."
+    },
+    {
+      "id": "C3",
+      "text": "The member has taken part in a reduced-calorie diet and increased physical activity program for at least 3 months before the request, and will continue it during treatment."
+    },
+    {
+      "id": "C4",
+      "text": "The drug will not be used together with another GLP-1 receptor agonist or GLP-1 containing product."
+    }
+  ],
+  "logic": {"all_of": ["C1", "C2", "C3", "C4"]},
+  "sections": [
+    {
+      "section_id": "MP-RX-310 §1",
+      "heading": "Scope and plan applicability",
+      "text": "This policy applies to GLP-1 receptor agonists prescribed for chronic weight management in adults. In this synthetic benefit design it applies to commercial PPO and HMO plans only. Use for type 2 diabetes is reviewed under a separate diabetes policy."
+    },
+    {
+      "section_id": "MP-RX-310 §2.1",
+      "heading": "BMI and comorbidities (criterion C2)",
+      "text": "Use a BMI measured within the last 3 months, before treatment. When the BMI is between 27 and 30, at least one weight-related comorbidity must be documented as a diagnosis: hypertension, type 2 diabetes, dyslipidemia, or obstructive sleep apnea. Prediabetes alone is not a qualifying comorbidity in this policy."
+    },
+    {
+      "section_id": "MP-RX-310 §2.2",
+      "heading": "Lifestyle program (criterion C3)",
+      "text": "The record must describe a reduced-calorie diet and increased physical activity for at least 3 months, for example a dietitian program, a structured commercial program, or clinician-supervised counseling with documented follow-up. A single counseling visit or a statement that the member was advised to lose weight does not meet the criterion."
+    },
+    {
+      "section_id": "MP-RX-310 §2.3",
+      "heading": "Concurrent therapy (criterion C4)",
+      "text": "GLP-1 receptor agonists must not be combined with each other or with GLP-1 containing combination products. If the member currently takes another GLP-1 product, the request must state that it will be stopped."
+    },
+    {
+      "section_id": "MP-RX-310 §3",
+      "heading": "Renewal",
+      "text": "Initial approval is for 6 months. Renewal requires at least 5 percent weight loss from baseline. Renewal is outside the scope of the initial review."
+    }
+  ]
+}

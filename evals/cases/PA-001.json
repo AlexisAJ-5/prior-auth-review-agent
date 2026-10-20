@@ -1,0 +1,22 @@
+{
+  "case_id": "PA-001",
+  "summary": "Lumbar MRI after a failed 6-week PT trial, surgeon planning an injection",
+  "request": {
+    "plan_id": "commercial_ppo",
+    "service_code": "mri_lumbar_spine",
+    "diagnosis_codes": [
+      "M54.42"
+    ],
+    "urgency": "standard",
+    "clinical_notes": "Patient: Daniel Okafor. DOB 04/12/1974. MRN 00482913. Phone (415) 555-0142.\n52-year-old warehouse supervisor seen for low back pain radiating down the left leg, onset about 9 weeks ago after lifting boxes. He completed 6 weeks of supervised physical therapy (12 sessions) and took naproxen 500 mg twice daily during that period, with no meaningful improvement. Pain is 7/10 and worse with sitting. Exam: positive straight leg raise on the left at 40 degrees, decreased sensation over the dorsum of the left foot, strength 5/5 throughout, reflexes symmetric. No bowel or bladder changes, no fever, no weight loss, no history of cancer. Referred to spine surgery; Dr. Hamid plans a lumbar epidural steroid injection and needs MRI to choose the level."
+  },
+  "expected": {
+    "recommendation": "recommend_approval",
+    "criteria": {
+      "RF1": "not_met",
+      "C1": "met",
+      "C2": "met",
+      "C3": "met"
+    }
+  }
+}

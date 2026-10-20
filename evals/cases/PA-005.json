@@ -1,0 +1,22 @@
+{
+  "case_id": "PA-005",
+  "summary": "Knee arthroscopy in advanced osteoarthritis without mechanical symptoms",
+  "request": {
+    "plan_id": "medicare_advantage",
+    "service_code": "knee_arthroscopy",
+    "diagnosis_codes": [
+      "M23.222"
+    ],
+    "urgency": "standard",
+    "clinical_notes": "67-year-old retired teacher with chronic left knee pain and swelling for 2 years, worse on stairs. She denies locking, catching or giving way. McMurray test negative. She completed 8 weeks of physical therapy and had a corticosteroid injection 3 months ago with temporary relief. Weight-bearing radiographs show severe medial joint space narrowing, bone-on-bone, Kellgren-Lawrence grade 4. MRI shows a degenerative complex tear of the posterior horn of the medial meniscus. Requesting arthroscopic debridement and partial meniscectomy."
+  },
+  "expected": {
+    "recommendation": "refer_to_physician_review",
+    "criteria": {
+      "C1": "not_met",
+      "C2": "met",
+      "C3": "met",
+      "C4": "not_met"
+    }
+  }
+}
